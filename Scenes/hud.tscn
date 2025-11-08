@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://8045sgtb8mph"]
+[gd_scene load_steps=7 format=3 uid="uid://8045sgtb8mph"]
 
 [ext_resource type="Script" uid="uid://cjml38bf5i315" path="res://Scripts/hud.gd" id="1_e0onf"]
-[ext_resource type="Script" uid="uid://doft2q4alty4t" path="res://Scenes/compass.gd" id="2_fccik"]
 [ext_resource type="Script" uid="uid://ckdqkyv1wpqa5" path="res://Scripts/ScoreKeeping.gd" id="2_fccik"]
+[ext_resource type="Script" uid="uid://doft2q4alty4t" path="res://Scripts/compass.gd" id="3_bjfho"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gfia"]
 font_size = 64
@@ -73,7 +73,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(20, 20)
-script = ExtResource("2_fccik")
+script = ExtResource("3_bjfho")
 
 [node name="Needle" type="Label" parent="Compass"]
 layout_mode = 1
