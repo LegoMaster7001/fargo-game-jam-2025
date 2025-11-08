@@ -5,13 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dk80ljltcudh8" path="res://Images/GameJam Wall Tile.png" id="2_3so38"]
 [ext_resource type="PackedScene" uid="uid://ktvyw4a0tc03" path="res://Scenes/player.tscn" id="2_j5yw3"]
 [ext_resource type="PackedScene" uid="uid://lrookntm6kpp" path="res://Scenes/enemy.tscn" id="3_kldst"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://cwp83sci60oxi" path="res://Scenes/groundies_area.tscn" id="4_kldst"]
 [ext_resource type="PackedScene" uid="uid://8045sgtb8mph" path="res://Scenes/hud.tscn" id="5_b2bpf"]
-=======
 [ext_resource type="Texture2D" uid="uid://dcidh3peq3swn" path="res://Images/floor 5.png" id="4_3cx6b"]
-[ext_resource type="PackedScene" uid="uid://cwp83sci60oxi" path="res://Scenes/groundies_area.tscn" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://8045sgtb8mph" path="res://Scenes/hud.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://bjgo075dp3j1p" path="res://Images/floor 4.png" id="5_wxwew"]
 [ext_resource type="Texture2D" uid="uid://un6tbjqwu30p" path="res://Images/floor 3.png" id="6_acvyw"]
 [ext_resource type="Texture2D" uid="uid://7iqcu4j4skqk" path="res://Images/floor 2.png" id="7_alh3a"]
@@ -21,7 +17,6 @@
 texture = ExtResource("2_3so38")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
->>>>>>> main
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kldst"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
