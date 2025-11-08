@@ -26,13 +26,14 @@ func _unhandled_input(event: InputEvent):
 	dir = dir.normalized()
 
 	if event.is_action_pressed("call_groundies"):
-		groundies_area.try_call_groundies()
+		if (!Global.hunted):
+			groundies_area.try_call_groundies()
 
 	if event.is_action_pressed("debug_flip_role"):
 		Global.flip_role()
 
 func checkDashing():
-	if Input.is_key_pressed(KEY_E) && dashReady:
+	if Input.is_key_pressed(KEY_E) && dashReady && !Global.hunting:
 		dashReady = false
 		dashing = true
 		$DashTimer.start()

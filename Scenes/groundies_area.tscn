@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cwp83sci60oxi"]
 
-[ext_resource type="Script" uid="uid://dcdbortnn42t0" path="res://groundies_area.gd" id="1_q8jfx"]
+[ext_resource type="Script" uid="uid://dcdbortnn42t0" path="res://Scripts/groundies_area.gd" id="1_q8jfx"]
 
 [node name="GroundiesArea" type="Area2D"]
 script = ExtResource("1_q8jfx")
