@@ -136,4 +136,6 @@ shape = SubResource("RectangleShape2D_kldst")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_b2bpf")]
+[node name="HUD" parent="CanvasLayer" node_paths=PackedStringArray("player", "enemy") instance=ExtResource("5_b2bpf")]
+player = NodePath("../../Player")
+enemy = NodePath("../../Enemy")
