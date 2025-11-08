@@ -148,6 +148,7 @@ scale = Vector2(0.25, 0.25)
 player = NodePath("../Player")
 
 [node name="GroundiesArea" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_kldst")]
+position = Vector2(-2, 0)
 scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 2

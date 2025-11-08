@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-var speed = 100
+var speed = 5
 
 
 @export var player: Node2D
@@ -27,6 +27,7 @@ func _physics_process(delta: float) -> void:
 		Global.flip_role(false)
 	
 	changeSprites()
+	speedIncrease()
 
 func makepath():
 	nav_agent.target_position = player.global_position
@@ -57,19 +58,14 @@ func changeSprites():
 	match Global.score:
 		1:
 			$Sprite2D.texture = load(SpriteFile + "Enemy2.png")
-			speed = 60
 		2:
 			$Sprite2D.texture = load(SpriteFile + "Enemy3.png")
-			speed = 70
 		3:
 			$Sprite2D.texture = load(SpriteFile + "Enemy4.png")
-			speed = 80
 		4:
 			$Sprite2D.texture = load(SpriteFile + "Enemy5.png")
-			speed = 100
 		_:
 			$Sprite2D.texture = load(SpriteFile + "Enemy1.png")
-			speed = 50
 		
 func checkIfStuck():
 	if(!stuckTimerIsRunning):
@@ -80,6 +76,21 @@ func checkIfStuck():
 				return true
 		return false
 	return true
+
+func speedIncrease():
+	await get_tree().create_timer(1).timeout
+	match Global.score:
+		1:
+			speed = 60
+		2:
+			speed = 70
+		3:
+			speed = 80
+		4:
+			speed = 100
+		_:
+			speed = 50
+	
 
 
 func _on_stuck_timer_timeout() -> void:
