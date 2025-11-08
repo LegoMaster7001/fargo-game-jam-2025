@@ -21,6 +21,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3xnh"]
 texture = ExtResource("2_3so38")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 0:0/0/navigation_layer_1/polygon = SubResource("NavigationPolygon_4q8tf")
@@ -46,6 +47,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8r6kd"]
 texture = ExtResource("4_3cx6b")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_3so38")
 
@@ -57,6 +59,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfod6"]
 texture = ExtResource("5_wxwew")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_3cx6b")
 
@@ -68,6 +71,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rajel"]
 texture = ExtResource("6_acvyw")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_wxwew")
 
@@ -79,6 +83,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvhu1"]
 texture = ExtResource("7_alh3a")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_acvyw")
 
@@ -90,6 +95,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbihj"]
 texture = ExtResource("8_4q8tf")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_alh3a")
 
@@ -105,6 +111,7 @@ texture = ExtResource("8_3so38")
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_x3xnh")
 
 [sub_resource type="TileSet" id="TileSet_kldst"]
+tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 navigation_layer_1/layers = 0
