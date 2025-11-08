@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-const speed = 80
+var speed = 100
 
 
 @export var player: Node2D
@@ -57,14 +57,19 @@ func changeSprites():
 	match Global.score:
 		1:
 			$Sprite2D.texture = load(SpriteFile + "Enemy2.png")
+			speed = 60
 		2:
 			$Sprite2D.texture = load(SpriteFile + "Enemy3.png")
+			speed = 70
 		3:
 			$Sprite2D.texture = load(SpriteFile + "Enemy4.png")
+			speed = 80
 		4:
 			$Sprite2D.texture = load(SpriteFile + "Enemy5.png")
+			speed = 100
 		_:
 			$Sprite2D.texture = load(SpriteFile + "Enemy1.png")
+			speed = 50
 		
 func checkIfStuck():
 	if(!stuckTimerIsRunning):
