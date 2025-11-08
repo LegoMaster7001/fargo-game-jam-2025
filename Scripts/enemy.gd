@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-const speed = 50
+const speed = 80
 
 
 @export var player: Node2D
