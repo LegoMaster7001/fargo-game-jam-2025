@@ -34,7 +34,7 @@ func _on_timer_2_timeout() -> void:
 	flip_role()
 
 func _on_hunt_area_body_exited(body: Node2D) -> void:
-	if not Global.hunted:
+	if Global.hunted:
 		return
 	# the player has escaped, so now we become hunted
 	print("{0} escaped".format([body.name]))
