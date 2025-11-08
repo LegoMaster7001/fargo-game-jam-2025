@@ -4,17 +4,14 @@ signal role_changed(hunted: bool)
 
 var hunted = false
 var score = 0
+var scorekeeping = ScoreKeeping.new()
 
 # "alias" for !hunted
 var hunting: bool :
 	get(): return !hunted
 
 func flip_role():
-	if (Global.hunted):
-		Global.addScore()
-	else:
-		Global.subtractScore()
-	scorekeeping.update_score()
+	scorekeeping.hit()
 	Global.hunted = !Global.hunted
 	Global.role_changed.emit(Global.hunted)
 	

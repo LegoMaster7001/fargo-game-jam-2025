@@ -10,7 +10,6 @@ const speed = 50
 @export var role_flip_timer: Timer
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var initial_pos := global_position
-@onready var scorekeeping = ScoreKeeping.new()
 
 
 func _ready() -> void:

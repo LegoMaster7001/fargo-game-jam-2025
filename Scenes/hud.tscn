@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://8045sgtb8mph"]
+[gd_scene load_steps=4 format=3 uid="uid://8045sgtb8mph"]
 
 [ext_resource type="Script" uid="uid://cjml38bf5i315" path="res://Scripts/hud.gd" id="1_e0onf"]
+[ext_resource type="Script" uid="uid://ckdqkyv1wpqa5" path="res://Scripts/ScoreKeeping.gd" id="2_fccik"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gfia"]
 font_size = 64
@@ -28,7 +29,8 @@ text = "RUN"
 label_settings = SubResource("LabelSettings_3gfia")
 horizontal_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="Score" type="TextEdit" parent="."]
 layout_mode = 0
 offset_right = 174.0
 offset_bottom = 43.0
+script = ExtResource("2_fccik")
