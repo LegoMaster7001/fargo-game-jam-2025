@@ -1,22 +1,29 @@
-[gd_scene load_steps=28 format=4 uid="uid://cxee8n6fod8oc"]
+[gd_scene load_steps=29 format=4 uid="uid://cxee8n6fod8oc"]
 
 [ext_resource type="Script" uid="uid://byjqt6np4vbbm" path="res://Scripts/Global.gd" id="1_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://cvj7th2nvu8uj" path="res://Images/2pixels.png" id="1_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://dk80ljltcudh8" path="res://Images/GameJam Wall Tile.png" id="2_3so38"]
 [ext_resource type="PackedScene" uid="uid://ktvyw4a0tc03" path="res://Scenes/player.tscn" id="2_j5yw3"]
 [ext_resource type="PackedScene" uid="uid://lrookntm6kpp" path="res://Scenes/enemy.tscn" id="3_kldst"]
-[ext_resource type="PackedScene" uid="uid://cwp83sci60oxi" path="res://Scenes/groundies_area.tscn" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://8045sgtb8mph" path="res://Scenes/hud.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://dcidh3peq3swn" path="res://Images/floor 5.png" id="4_3cx6b"]
+[ext_resource type="PackedScene" uid="uid://cwp83sci60oxi" path="res://Scenes/groundies_area.tscn" id="4_kldst"]
+[ext_resource type="PackedScene" path="res://Scenes/hud.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://bjgo075dp3j1p" path="res://Images/floor 4.png" id="5_wxwew"]
 [ext_resource type="Texture2D" uid="uid://un6tbjqwu30p" path="res://Images/floor 3.png" id="6_acvyw"]
 [ext_resource type="Texture2D" uid="uid://7iqcu4j4skqk" path="res://Images/floor 2.png" id="7_alh3a"]
 [ext_resource type="Texture2D" uid="uid://cxa05suxxfyas" path="res://Images/floor 1.png" id="8_4q8tf"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4q8tf"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3xnh"]
 texture = ExtResource("2_3so38")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/navigation_layer_1/polygon = SubResource("NavigationPolygon_4q8tf")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kldst"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -89,6 +96,7 @@ texture = ExtResource("8_4q8tf")
 [sub_resource type="TileSet" id="TileSet_kldst"]
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
+navigation_layer_1/layers = 0
 custom_data_layer_0/name = ""
 custom_data_layer_0/type = 0
 sources/1 = SubResource("TileSetAtlasSource_b2bpf")
