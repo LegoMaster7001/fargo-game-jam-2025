@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent):
 		Global.flip_role()
 
 func checkDashing():
-	if Input.is_key_pressed(KEY_E) && dashReady:
+	if Input.is_key_pressed(KEY_E) && dashReady && Global.hunted:
 		dashReady = false
 		dashing = true
 		$DashTimer.start()
