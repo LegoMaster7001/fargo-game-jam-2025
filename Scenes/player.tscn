@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ktvyw4a0tc03"]
+[gd_scene load_steps=4 format=3 uid="uid://vp2oiwo0fmc"]
 
-[ext_resource type="Script" uid="uid://l34cd8anax55" path="res://Player.gd" id="1_cvnsp"]
-[ext_resource type="Texture2D" uid="uid://d0v4u8wbaq2ur" path="res://Images/PlayerRunAway.png" id="2_cvnsp"]
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_cvnsp"]
+[ext_resource type="Texture2D" uid="uid://cntgj0ac7y8qk" path="res://Images/icon.svg" id="2_6t5aa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gl6un"]
 radius = 56.0
