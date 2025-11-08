@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bj3da0w8h862g"]
+[gd_scene load_steps=5 format=3 uid="uid://lrookntm6kpp"]
 
 [ext_resource type="Script" uid="uid://dsoej1015oup0" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://b4wuj2c3id5bc" path="res://Images/EnemyAngry.png" id="2_1f0kj"]
@@ -6,9 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2bpf"]
 radius = 56.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kldst"]
+radius = 78.92
+
 [node name="Enemy" type="CharacterBody2D"]
 scale = Vector2(0.125, 0.125)
-collision_layer = 2
+collision_layer = 0
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
@@ -25,13 +28,22 @@ shape = SubResource("CircleShape2D_b2bpf")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
-[node name="PathfindingTimer" type="Timer" parent="."]
+[node name="Timer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
 
-[node name="RoleFlipTimer" type="Timer" parent="."]
+[node name="Timer2" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
-[connection signal="timeout" from="PathfindingTimer" to="." method="_on_pathfinding_timer_timeout"]
-[connection signal="timeout" from="RoleFlipTimer" to="." method="_on_role_flip_timer_timeout"]
+[node name="TagZone" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="TagZoneCollision" type="CollisionShape2D" parent="TagZone"]
+shape = SubResource("CircleShape2D_kldst")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="area_entered" from="TagZone" to="." method="_on_tag_zone_area_entered"]
+[connection signal="body_entered" from="TagZone" to="." method="_on_tag_zone_body_entered"]
