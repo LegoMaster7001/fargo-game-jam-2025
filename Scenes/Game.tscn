@@ -54,5 +54,3 @@ enemy = NodePath("../Enemy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundiesArea"]
 position = Vector2(21, -9)
 shape = SubResource("RectangleShape2D_kldst")
-
-[node name="Node" type="Node" parent="."]
