@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 const speed = 100
 
+@export var enemy: Enemy
 @export var groundies_area: GroundiesArea
 var dir : Vector2
 
@@ -16,3 +17,6 @@ func _unhandled_input(event: InputEvent):
 
 	if event.is_action_pressed("action"):
 		groundies_area.call_groundies()
+
+	if event.is_action_pressed("debug_flip_role"):
+		enemy.flip_role()

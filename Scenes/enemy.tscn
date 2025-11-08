@@ -25,13 +25,13 @@ shape = SubResource("CircleShape2D_b2bpf")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 debug_enabled = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="PathfindingTimer" type="Timer" parent="."]
 wait_time = 0.1
 autostart = true
 
-[node name="Timer2" type="Timer" parent="."]
+[node name="RoleFlipTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="PathfindingTimer" to="." method="_on_pathfinding_timer_timeout"]
+[connection signal="timeout" from="RoleFlipTimer" to="." method="_on_role_flip_timer_timeout"]
