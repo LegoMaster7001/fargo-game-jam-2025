@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 const speed = 100
+
+@export var groundies_area: GroundiesArea
 var dir : Vector2
 
 func _physics_process(delta: float):
@@ -11,3 +13,6 @@ func _unhandled_input(event: InputEvent):
 	dir.x = Input.get_axis("ui_left", "ui_right")
 	dir.y = Input.get_axis("ui_up", "ui_down")
 	dir = dir.normalized()
+
+	if event.is_action_pressed("action"):
+		groundies_area.call_groundies()
