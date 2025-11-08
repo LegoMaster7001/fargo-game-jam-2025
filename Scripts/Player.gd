@@ -11,6 +11,7 @@ var dashing = false
 
 func _ready() -> void:
 	assert(groundies_area !=  null, "Player: assign groundies area")
+	_on_role_changed(Global.hunted)
 	Global.role_changed.connect(_on_role_changed)
 
 func _physics_process(delta: float):
@@ -18,7 +19,6 @@ func _physics_process(delta: float):
 	checkDashing()
 	
 	move_and_slide()
-	changeSprites()
 
 func _unhandled_input(event: InputEvent):
 	dir.x = Input.get_axis("ui_left", "ui_right")
@@ -29,7 +29,7 @@ func _unhandled_input(event: InputEvent):
 		groundies_area.try_call_groundies()
 
 	if event.is_action_pressed("debug_flip_role"):
-		groundies_area.enemy.flip_role()
+		Global.flip_role()
 
 func checkDashing():
 	if Input.is_key_pressed(KEY_E) && dashReady:
@@ -53,4 +53,4 @@ func changeSprites():
 		$Sprite2D.texture = load("res://Images/PlayerAngry.png")
 
 func _on_role_changed(hunted: bool) -> void:
-	pass
+	changeSprites()
