@@ -5,15 +5,22 @@ const speed = 50
 
 
 @export var player: Node2D
+@export var tag_checker: TagChecker
 @export var role_flip_timer: Timer
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var initial_pos := global_position
 
 
+func _ready() -> void:
+	Global.role_changed.connect(_on_role_changed)
+
 func _physics_process(delta: float) -> void:
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * speed
 	move_and_slide()
+
+	if tag_checker.try_tag():
+		Global.flip_role()
 	
 	changeSprites()
 
@@ -22,23 +29,21 @@ func makepath():
 	if (Global.hunted):
 		nav_agent.target_position = -self.to_local(player.global_position)
 
-func flip_role():
-	Global.hunted = !Global.hunted
-	Global.role_changed.emit(Global.hunted)
+func _on_role_changed(hunted: bool) -> void:
 	makepath()
 
 func _on_timer_timeout():
 	makepath()
 
 func _on_timer_2_timeout() -> void:
-	flip_role()
+	Global.flip_role()
 
 func _on_hunt_area_body_exited(body: Node2D) -> void:
 	if Global.hunted:
 		return
 	# the player has escaped, so now we become hunted
 	print("{0} escaped".format([body.name]))
-	flip_role()
+	Global.flip_role()
 	
 func changeSprites():
 	if (Global.hunted):

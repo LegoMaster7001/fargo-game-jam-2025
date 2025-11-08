@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxr0tfdg384og"]
+
+[ext_resource type="Script" uid="uid://c1c4o3d6te7cw" path="res://Scripts/tag_checker.gd" id="1_ehrmg"]
+
+[node name="TagChecker" type="Node2D" node_paths=PackedStringArray("debounce_timer")]
+script = ExtResource("1_ehrmg")
+debounce_timer = NodePath("DebounceTimer")
+
+[node name="DebounceTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
