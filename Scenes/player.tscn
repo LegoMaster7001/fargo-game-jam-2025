@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ktvyw4a0tc03"]
 
-[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_cvnsp"]
+[ext_resource type="Script" uid="uid://l34cd8anax55" path="res://Scripts/Player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://d0v4u8wbaq2ur" path="res://Images/PlayerRunAway.png" id="2_cvnsp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gl6un"]
@@ -19,3 +19,10 @@ texture = ExtResource("2_cvnsp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_gl6un")
+
+[node name="DashCooldownTimer" type="Timer" parent="."]
+
+[node name="DashTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
