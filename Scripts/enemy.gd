@@ -52,7 +52,18 @@ func changeSprites():
 	if (Global.player_is_hunter):
 		$Sprite2D.texture = load("res://Images/EnemyRunAway.png")
 	else:
-		$Sprite2D.texture = load("res://Images/EnemyAngry.png")
+		$Sprite2D.texture = load("res://Images/EnemyAngryPhases.png")
+	match Global.score:
+		1:
+			pass
+		2:
+			pass
+		3:
+			pass
+		4:
+			pass
+		_:
+			pass
 		
 func checkIfStuck():
 	if(!stuckTimerIsRunning):
