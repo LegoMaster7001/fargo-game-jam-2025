@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://lrookntm6kpp"]
 
 [ext_resource type="Script" uid="uid://dsoej1015oup0" path="res://Scripts/enemy.gd" id="1_1f0kj"]
-[ext_resource type="Texture2D" uid="uid://45ipywb5cnr0" path="res://Images/EnemyAngryPhases.png" id="2_afpow"]
+[ext_resource type="Texture2D" uid="uid://b4wuj2c3id5bc" path="res://Images/EnemyAngry.png" id="2_1f0kj"]
 [ext_resource type="PackedScene" uid="uid://bxr0tfdg384og" path="res://Scenes/tag_checker.tscn" id="3_afpow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2bpf"]
@@ -22,7 +22,7 @@ tag_checker = NodePath("TagChecker")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
-texture = ExtResource("2_afpow")
+texture = ExtResource("2_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_b2bpf")
