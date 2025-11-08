@@ -3,9 +3,13 @@ extends Control
 
 const TIME_FORMAT = "%.1f"
 
+@export var player: Player
+@export var enemy: Enemy
+
 @export var role_label: Label
 @export var time_label: Label
 @export var scoreBox: TextEdit
+@export var compass: Compass
 
 func _ready() -> void:
 	update_text()
