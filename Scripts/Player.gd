@@ -16,7 +16,8 @@ func _physics_process(delta: float):
 	checkDashing()
 	
 	move_and_slide()
-	
+	changeSprites()
+
 func _unhandled_input(event: InputEvent):
 	dir.x = Input.get_axis("ui_left", "ui_right")
 	dir.y = Input.get_axis("ui_up", "ui_down")
@@ -46,3 +47,9 @@ func _on_dash_cooldown_timer_timeout() -> void:
 func _on_dash_timer_timeout():
 	dashing = false
 	$DashCooldownTimer.start()
+	
+func changeSprites():
+	if (!Global.hunted):
+		$Sprite2D.texture = load("res://Images/PlayerRunAway.png")
+	else:
+		$Sprite2D.texture = load("res://Images/PlayerAngry.png")
