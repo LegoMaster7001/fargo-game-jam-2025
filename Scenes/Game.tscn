@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=4 uid="uid://cxee8n6fod8oc"]
+[gd_scene load_steps=11 format=4 uid="uid://cxee8n6fod8oc"]
 
 [ext_resource type="Script" path="res://Scripts/Global.gd" id="1_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://cvj7th2nvu8uj" path="res://Images/2pixels.png" id="1_j5yw3"]
 [ext_resource type="PackedScene" uid="uid://ktvyw4a0tc03" path="res://Scenes/player.tscn" id="2_j5yw3"]
 [ext_resource type="PackedScene" uid="uid://lrookntm6kpp" path="res://Scenes/enemy.tscn" id="3_kldst"]
-[ext_resource type="PackedScene" uid="uid://cwp83sci60oxi" path="res://Scenes/groundies_area.tscn" id="4_kldst"]
+[ext_resource type="PackedScene" uid="uid://cj40knw577kg4" path="res://Scenes/groundies_area.tscn" id="4_kldst"]
+[ext_resource type="PackedScene" uid="uid://cvthwhmm8fois" path="res://Scenes/hud.tscn" id="5_b2bpf"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kldst"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -43,7 +44,6 @@ zoom = Vector2(4, 4)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_kldst")]
 position = Vector2(25, -37)
-collision_layer = 2
 player = NodePath("../Player")
 
 [node name="GroundiesArea" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_kldst")]
@@ -54,3 +54,7 @@ enemy = NodePath("../Enemy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundiesArea"]
 position = Vector2(21, -9)
 shape = SubResource("RectangleShape2D_kldst")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_b2bpf")]

@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 const speed = 20
 
+
 @export var player: Node2D
 @export var role_flip_timer: Timer
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
@@ -23,13 +24,20 @@ func makepath():
 
 func flip_role():
 	Global.hunted = !Global.hunted
+	Global.role_changed.emit(Global.hunted)
 	makepath()
-	role_flip_timer.start()
 
 func _on_timer_timeout():
 	makepath()
 
 func _on_timer_2_timeout() -> void:
+	flip_role()
+
+func _on_hunt_area_body_exited(body: Node2D) -> void:
+	if Global.hunted:
+		return
+	# the player has escaped, so now we become hunted
+	print("{0} escaped".format([body.name]))
 	flip_role()
 	
 func changeSprites():
