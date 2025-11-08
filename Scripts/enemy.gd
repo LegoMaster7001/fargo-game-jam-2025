@@ -9,7 +9,7 @@ signal role_changed(hunted: bool)
 @export var role_flip_timer: Timer
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var initial_pos := global_position
-var hunted = true
+
 
 var hunting: bool :
 	get(): return !hunted
@@ -18,18 +18,16 @@ func _physics_process(delta: float) -> void:
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * speed
 	move_and_slide()
-	if (hunted):
-		$Sprite2D.modulate = Color(0, 1, 0)
-	else:
-		$Sprite2D.modulate = Color(1, 0, 0)
+	
+	changeSprites()
 
 func makepath():
 	nav_agent.target_position = player.global_position
-	if (hunted):
-		nav_agent.target_position = -player.global_position * 5
+	if (Global.hunted):
+		nav_agent.target_position = -player.global_position
 
 func flip_role():
-	hunted = !hunted
+	Global.hunted = !Global.hunted
 	makepath()
 	role_changed.emit(hunted)
 
@@ -45,3 +43,9 @@ func _on_hunt_area_body_exited(body: Node2D) -> void:
 	# the player has escaped, so now we become hunted
 	print("{0} escaped".format([body.name]))
 	flip_role()
+	
+func changeSprites():
+	if (Global.hunted):
+		$Sprite2D.texture = load("res://Images/EnemyRunAway.png")
+	else:
+		$Sprite2D.texture = load("res://Images/EnemyAngry.png")
