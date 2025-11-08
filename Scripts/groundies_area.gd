@@ -8,6 +8,6 @@ func try_call_groundies() -> bool:
 		return false
 	if Global.hunted:
 		return false
-	Global.flip_role()
+	Global.flip_role(false)
 	return true
 		
