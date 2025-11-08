@@ -6,8 +6,8 @@ extends Area2D
 func try_call_groundies() -> bool:
 	if not overlaps_body(enemy):
 		return false
-	if Global.hunted:
+	if Global.player_is_hunter:
 		return false
-	Global.flip_role(false)
+	Global.flip_role(true)
 	return true
 		
