@@ -24,7 +24,6 @@ func _unhandled_input(event: InputEvent):
 	dir = dir.normalized()
 
 	if event.is_action_pressed("call_groundies"):
-		print("hello")
 		groundies_area.try_call_groundies()
 
 	if event.is_action_pressed("debug_flip_role"):
