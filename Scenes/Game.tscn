@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://cxee8n6fod8oc"]
+[gd_scene load_steps=28 format=4 uid="uid://cxee8n6fod8oc"]
 
 [ext_resource type="Script" uid="uid://byjqt6np4vbbm" path="res://Scripts/Global.gd" id="1_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://cvj7th2nvu8uj" path="res://Images/2pixels.png" id="1_j5yw3"]
@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://lrookntm6kpp" path="res://Scenes/enemy.tscn" id="3_kldst"]
 [ext_resource type="Texture2D" uid="uid://dcidh3peq3swn" path="res://Images/floor 5.png" id="4_3cx6b"]
 [ext_resource type="PackedScene" uid="uid://cwp83sci60oxi" path="res://Scenes/groundies_area.tscn" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://8045sgtb8mph" path="res://Scenes/hud.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" path="res://Scenes/hud.tscn" id="5_b2bpf"]
 [ext_resource type="Texture2D" uid="uid://bjgo075dp3j1p" path="res://Images/floor 4.png" id="5_wxwew"]
 [ext_resource type="Texture2D" uid="uid://un6tbjqwu30p" path="res://Images/floor 3.png" id="6_acvyw"]
 [ext_resource type="Texture2D" uid="uid://7iqcu4j4skqk" path="res://Images/floor 2.png" id="7_alh3a"]
@@ -31,25 +31,60 @@ texture = ExtResource("1_j5yw3")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3so38"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8r6kd"]
 texture = ExtResource("4_3cx6b")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_3so38")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_3cx6b"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfod6"]
 texture = ExtResource("5_wxwew")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_3cx6b")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_wxwew"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rajel"]
 texture = ExtResource("6_acvyw")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_wxwew")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_acvyw"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vvhu1"]
 texture = ExtResource("7_alh3a")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_acvyw")
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_alh3a"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbihj"]
 texture = ExtResource("8_4q8tf")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_alh3a")
 
 [sub_resource type="TileSet" id="TileSet_kldst"]
 physics_layer_0/collision_layer = 1
@@ -76,7 +111,8 @@ tile_set = SubResource("TileSet_kldst")
 [node name="Player" parent="." node_paths=PackedStringArray("groundies_area") instance=ExtResource("2_j5yw3")]
 groundies_area = NodePath("../GroundiesArea")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="Player"]
+scale = Vector2(8, 8)
 zoom = Vector2(4, 4)
 
 [node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_kldst")]
