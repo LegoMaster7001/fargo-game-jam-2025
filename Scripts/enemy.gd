@@ -1,8 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-
-const speed = 50
+const speed = 80
 
 
 @export var player: Node2D
@@ -10,6 +9,11 @@ const speed = 50
 @export var role_flip_timer: Timer
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var initial_pos := global_position
+@onready var rayDown = $Rays/Down
+@onready var rayUp = $Rays/Up
+@onready var rayLeft = $Rays/Left
+@onready var rayRight = $Rays/Right
+var stuckTimerIsRunning = false
 
 
 func _ready() -> void:
@@ -19,7 +23,6 @@ func _physics_process(delta: float) -> void:
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * speed
 	move_and_slide()
-
 	if tag_checker.try_tag():
 		Global.flip_role()
 	
@@ -28,16 +31,15 @@ func _physics_process(delta: float) -> void:
 func makepath():
 	nav_agent.target_position = player.global_position
 	if (Global.hunted):
-		nav_agent.target_position = -self.to_local(player.global_position)
+		nav_agent.target_position = to_global(-self.to_local(player.global_position))
+	if (checkIfStuck()):
+		nav_agent.target_position = Vector2(0, 0)
 
 func _on_role_changed(hunted: bool) -> void:
 	makepath()
 
 func _on_timer_timeout():
 	makepath()
-
-func _on_timer_2_timeout() -> void:
-	Global.flip_role()
 
 func _on_hunt_area_body_exited(body: Node2D) -> void:
 	if Global.hunted:
@@ -51,3 +53,17 @@ func changeSprites():
 		$Sprite2D.texture = load("res://Images/EnemyRunAway.png")
 	else:
 		$Sprite2D.texture = load("res://Images/EnemyAngry.png")
+		
+func checkIfStuck():
+	if(!stuckTimerIsRunning):
+		if (rayDown.is_colliding() || rayUp.is_colliding()):
+			if (rayLeft.is_colliding() || rayRight.is_colliding()):
+				$StuckTimer.start(1)
+				stuckTimerIsRunning = true
+				return true
+		return false
+	return true
+
+
+func _on_stuck_timer_timeout() -> void:
+	stuckTimerIsRunning = false
