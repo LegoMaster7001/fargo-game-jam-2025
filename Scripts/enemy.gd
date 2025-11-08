@@ -27,7 +27,7 @@ func _physics_process(delta: float) -> void:
 func makepath():
 	nav_agent.target_position = player.global_position
 	if (Global.hunted):
-		nav_agent.target_position = -self.to_local(player.global_position)
+		nav_agent.target_position = to_global(-self.to_local(player.global_position))
 
 func _on_role_changed(hunted: bool) -> void:
 	makepath()
