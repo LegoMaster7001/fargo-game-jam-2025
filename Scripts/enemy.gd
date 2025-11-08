@@ -35,9 +35,6 @@ func _on_role_changed(hunted: bool) -> void:
 func _on_timer_timeout():
 	makepath()
 
-func _on_timer_2_timeout() -> void:
-	Global.flip_role()
-
 func _on_hunt_area_body_exited(body: Node2D) -> void:
 	if Global.hunted:
 		return

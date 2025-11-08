@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dsoej1015oup0" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://b4wuj2c3id5bc" path="res://Images/EnemyAngry.png" id="2_1f0kj"]
-[ext_resource type="PackedScene" uid="uid://bxr0tfdg384og" path="res://Scenes/tag_checker.tscn" id="3_afpow"]
+[ext_resource type="PackedScene" path="res://Scenes/tag_checker.tscn" id="3_afpow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2bpf"]
 radius = 56.0
@@ -18,7 +18,7 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_1f0kj")
 tag_checker = NodePath("TagChecker")
-role_flip_timer = NodePath("Timer2")
+role_flip_timer = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -36,9 +36,6 @@ debug_enabled = true
 wait_time = 0.1
 autostart = true
 
-[node name="Timer2" type="Timer" parent="."]
-wait_time = 3.0
-
 [node name="HuntArea" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
@@ -51,5 +48,4 @@ character_body_2d = NodePath("..")
 opponent_collision_layer = 3
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="body_exited" from="HuntArea" to="." method="_on_hunt_area_body_exited"]
