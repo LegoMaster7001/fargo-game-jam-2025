@@ -24,13 +24,13 @@ func _physics_process(delta: float) -> void:
 	velocity = dir * speed
 	move_and_slide()
 	if tag_checker.try_tag():
-		Global.flip_role()
+		Global.flip_role(false)
 	
 	changeSprites()
 
 func makepath():
 	nav_agent.target_position = player.global_position
-	if (Global.hunted):
+	if (Global.player_is_hunter):
 		nav_agent.target_position = to_global(-self.to_local(player.global_position))
 	if (checkIfStuck()):
 		nav_agent.target_position = Vector2(0, 0)
@@ -42,14 +42,14 @@ func _on_timer_timeout():
 	makepath()
 
 func _on_hunt_area_body_exited(body: Node2D) -> void:
-	if Global.hunted:
+	if Global.player_is_hunter:
 		return
 	# the player has escaped, so now we become hunted
 	print("{0} escaped".format([body.name]))
-	Global.flip_role()
+	Global.flip_role(false)
 	
 func changeSprites():
-	if (Global.hunted):
+	if (Global.player_is_hunter):
 		$Sprite2D.texture = load("res://Images/EnemyRunAway.png")
 	else:
 		$Sprite2D.texture = load("res://Images/EnemyAngry.png")
