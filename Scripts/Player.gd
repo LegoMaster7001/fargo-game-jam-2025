@@ -11,6 +11,7 @@ var dashing = false
 
 func _ready() -> void:
 	assert(groundies_area !=  null, "Player: assign groundies area")
+	Global.role_changed.connect(_on_role_changed)
 
 func _physics_process(delta: float):
 	velocity = dir * speed
@@ -50,3 +51,6 @@ func changeSprites():
 		$Sprite2D.texture = load("res://Images/PlayerRunAway.png")
 	else:
 		$Sprite2D.texture = load("res://Images/PlayerAngry.png")
+
+func _on_role_changed(hunted: bool) -> void:
+	pass
