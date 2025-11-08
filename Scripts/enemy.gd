@@ -49,10 +49,22 @@ func _on_hunt_area_body_exited(body: Node2D) -> void:
 	Global.flip_role(false)
 	
 func changeSprites():
+	var SpriteFile = "res://Images/"
 	if (Global.player_is_hunter):
-		$Sprite2D.texture = load("res://Images/EnemyRunAway.png")
+		SpriteFile = SpriteFile + "EnemyRunAway/"
 	else:
-		$Sprite2D.texture = load("res://Images/EnemyAngry.png")
+		SpriteFile = SpriteFile + "EnemyAngry/"
+	match Global.score:
+		1:
+			$Sprite2D.texture = load(SpriteFile + "Enemy2.png")
+		2:
+			$Sprite2D.texture = load(SpriteFile + "Enemy3.png")
+		3:
+			$Sprite2D.texture = load(SpriteFile + "Enemy4.png")
+		4:
+			$Sprite2D.texture = load(SpriteFile + "Enemy5.png")
+		_:
+			$Sprite2D.texture = load(SpriteFile + "Enemy1.png")
 		
 func checkIfStuck():
 	if(!stuckTimerIsRunning):
