@@ -11,7 +11,7 @@ var dashing = false
 
 func _ready() -> void:
 	assert(groundies_area !=  null, "Player: assign groundies area")
-	_on_role_changed(Global.hunted)
+	_on_role_changed()
 	Global.role_changed.connect(_on_role_changed)
 
 func _physics_process(delta: float):
@@ -29,10 +29,10 @@ func _unhandled_input(event: InputEvent):
 		groundies_area.try_call_groundies()
 
 	if event.is_action_pressed("debug_flip_role"):
-		Global.flip_role()
+		Global.flip_role(false)
 
 func checkDashing():
-	if Input.is_key_pressed(KEY_E) && dashReady && Global.hunted:
+	if Input.is_key_pressed(KEY_E) && dashReady && Global.player_is_hunted:
 		dashReady = false
 		dashing = true
 		$DashTimer.start()
@@ -47,10 +47,10 @@ func _on_dash_timer_timeout():
 	$DashCooldownTimer.start()
 	
 func changeSprites():
-	if (!Global.hunted):
+	if (!Global.player_is_hunted):
 		$Sprite2D.texture = load("res://Images/PlayerRunAway.png")
 	else:
 		$Sprite2D.texture = load("res://Images/PlayerAngry.png")
 
-func _on_role_changed(hunted: bool) -> void:
+func _on_role_changed() -> void:
 	changeSprites()
