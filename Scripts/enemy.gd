@@ -4,7 +4,9 @@ extends CharacterBody2D
 const speed = 20
 
 @export var player: Node2D
+@export var role_flip_timer: Timer
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
+@onready var initial_pos := global_position
 var hunted = true
 
 func _physics_process(delta: float) -> void:
@@ -24,11 +26,10 @@ func makepath():
 func flip_role():
 	hunted = !hunted
 	makepath()
-
+	role_flip_timer.start()
 
 func _on_timer_timeout():
 	makepath()
 
 func _on_timer_2_timeout() -> void:
-	hunted = !hunted
-
+	flip_role()

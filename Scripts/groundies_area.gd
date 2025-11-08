@@ -9,5 +9,6 @@ func try_call_groundies() -> bool:
 		return false
 	print("noob down")
 	enemy.flip_role()
+	enemy.global_position = enemy.initial_pos
 	return true
 		
