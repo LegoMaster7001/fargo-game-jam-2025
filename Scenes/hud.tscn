@@ -27,3 +27,8 @@ grow_horizontal = 2
 text = "RUN"
 label_settings = SubResource("LabelSettings_3gfia")
 horizontal_alignment = 1
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 43.0
