@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 const speed = 100
@@ -37,11 +38,8 @@ func checkDashing():
 	if dashing:
 		velocity = dir * speed * dashSpeed
 
-
-
 func _on_dash_cooldown_timer_timeout() -> void:
 	dashReady = true
-
 
 func _on_dash_timer_timeout():
 	dashing = false

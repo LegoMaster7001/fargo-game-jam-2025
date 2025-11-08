@@ -5,6 +5,7 @@ const speed = 20
 
 
 @export var player: Node2D
+@export var tag_checker: TagChecker
 @export var role_flip_timer: Timer
 @onready var nav_agent := $NavigationAgent2D as NavigationAgent2D
 @onready var initial_pos := global_position
@@ -14,6 +15,9 @@ func _physics_process(delta: float) -> void:
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * speed
 	move_and_slide()
+
+	if tag_checker.try_tag():
+		flip_role()
 	
 	changeSprites()
 
