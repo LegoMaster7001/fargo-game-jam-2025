@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c535i1mamraju" path="res://Images/floor 6.png" id="8_3so38"]
 [ext_resource type="Texture2D" uid="uid://cxa05suxxfyas" path="res://Images/floor 1.png" id="8_4q8tf"]
 [ext_resource type="PackedScene" uid="uid://cqf61m6ckbe5l" path="res://Scenes/pause_menu.tscn" id="14_wxwew"]
+[ext_resource type="PackedScene" uid="uid://brbwasvokje4v" path="res://Scenes/game_over.tscn" id="15_acvyw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3so38"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -187,13 +188,17 @@ shape = SubResource("RectangleShape2D_kldst")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" node_paths=PackedStringArray("player", "enemy", "groundiesArea", "pause_menu") instance=ExtResource("5_b2bpf")]
+[node name="HUD" parent="CanvasLayer" node_paths=PackedStringArray("player", "enemy", "groundiesArea", "pause_menu", "game_over_screen") instance=ExtResource("5_b2bpf")]
 player = NodePath("../../Player")
 enemy = NodePath("../../Enemy")
 groundiesArea = NodePath("../../GroundiesArea")
 pause_menu = NodePath("../PauseMenu")
+game_over_screen = NodePath("../GameOver")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("14_wxwew")]
+visible = false
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("15_acvyw")]
 visible = false
 
 [connection signal="area_entered" from="GroundiesArea" to="GroundiesArea" method="_on_area_entered"]

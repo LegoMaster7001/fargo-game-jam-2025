@@ -14,6 +14,7 @@ var HUNT_TEXT_TEXTURE = ResourceLoader.load("res://Images/text/hunt_text_outline
 @export var scoreBox: TextEdit
 @export var compass: Compass
 @export var pause_menu: PauseMenu
+@export var game_over_screen: GameOverScreen
 var isInArea = false
 var hasEscaped = false
 
@@ -21,7 +22,6 @@ func _ready() -> void:
 	update_text()
 	update_compass_visibity()
 	Global.role_changed.connect(_on_role_changed)
-	enemy.hasPlayerEscaped.connect(_on_ran_away)
 	groundiesArea.groundiesCalled.connect(_on_groundies_called)
 
 func _physics_process(delta: float) -> void:
@@ -39,6 +39,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		get_tree().paused = true
 		pause_menu.show()
+	if event.is_action_pressed("debug_end_game"):
+		end_game()
+
+func end_game():
+	Global.game_over = true
+	get_tree().paused = true
+	hide()
+	game_over_screen.show()
+	game_over_screen.animate()
 
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:
 	if (Global.role.hunted == old && timeout):
@@ -57,10 +66,14 @@ func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> 
 	update_text()
 	update_compass_visibity()
 
+func _on_score_changed(score: int) -> void:
+	if not Global.game_over:
+		return
+	end_game()
+
 func update_compass_visibity():
 	compass.visible = Global.player_is_hunter
 
 func update_text():
-	var text = "HUNT." if Global.player_is_hunter else "HIDE!"
 	role_texture.texture = HUNT_TEXT_TEXTURE if Global.player_is_hunter else HIDE_TEXT_TEXTURE
 	scoreBox.text = ("Score " + str(Global.score))
