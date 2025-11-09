@@ -1,6 +1,7 @@
 class_name TagChecker
 extends Node2D
 
+@export var hit_audio: AudioStreamPlayer
 @export var character_body_2d: CharacterBody2D
 @export var debounce_timer: Timer
 @export var opponent_collision_layer := 0
@@ -23,6 +24,7 @@ func try_tag() -> bool:
 	if not can_be_tagged():
 		return false
 	debounce_timer.start()
+	hit_audio.play()
 	return true
 
 func can_be_tagged() -> bool:
