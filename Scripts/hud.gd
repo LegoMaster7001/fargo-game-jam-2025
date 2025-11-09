@@ -22,11 +22,6 @@ func _ready() -> void:
 	update_text()
 	update_compass_visibity()
 	Global.role_changed.connect(_on_role_changed)
-<<<<<<< HEAD
-	Global.score_changed.connect(_on_score_changed)
-=======
-	enemy.hasPlayerEscaped.connect(_on_ran_away)
->>>>>>> main
 	groundiesArea.groundiesCalled.connect(_on_groundies_called)
 
 func _physics_process(delta: float) -> void:
@@ -34,22 +29,24 @@ func _physics_process(delta: float) -> void:
 	var player_to_enemy := player.position.direction_to(enemy.position)
 	compass.update_needle(player_to_enemy, delta)
 
-<<<<<<< HEAD
-func _on_groundies_called(isThereSomethingInArea):
-	isInArea = isThereSomethingInArea
-
-=======
 func _on_groundies_called(isInAreaWhenGroundies):
 	isInArea = isInAreaWhenGroundies
 	
 func _on_ran_away():
 	hasEscaped = true
 	
->>>>>>> main
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		get_tree().paused = true
 		pause_menu.show()
+	if event.is_action_pressed("debug_end_game"):
+		end_game()
+
+func end_game():
+	get_tree().paused = true
+	hide()
+	game_over_screen.show()
+	game_over_screen.animate()
 
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:
 	if (Global.role.hunted == old && timeout):
@@ -71,10 +68,7 @@ func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> 
 func _on_score_changed(score: int) -> void:
 	if not Global.game_over:
 		return
-	get_tree().paused = true
-	hide()
-	game_over_screen.show()
-	game_over_screen.animate()
+	end_game()
 
 func update_compass_visibity():
 	compass.visible = Global.player_is_hunter
