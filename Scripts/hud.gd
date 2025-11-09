@@ -15,11 +15,13 @@ var HUNT_TEXT_TEXTURE = ResourceLoader.load("res://Images/text/hunt_text_outline
 @export var compass: Compass
 @export var pause_menu: PauseMenu
 var isInArea = false
+var hasEscaped = false
 
 func _ready() -> void:
 	update_text()
 	update_compass_visibity()
 	Global.role_changed.connect(_on_role_changed)
+	enemy.hasPlayerEscaped.connect(_on_ran_away)
 	groundiesArea.groundiesCalled.connect(_on_groundies_called)
 
 func _physics_process(delta: float) -> void:
@@ -27,10 +29,12 @@ func _physics_process(delta: float) -> void:
 	var player_to_enemy := player.position.direction_to(enemy.position)
 	compass.update_needle(player_to_enemy, delta)
 
-func _on_groundies_called(isThereSomethingInArea):
-	isInArea = isThereSomethingInArea
+func _on_groundies_called(isInAreaWhenGroundies):
+	isInArea = isInAreaWhenGroundies
 	
-
+func _on_ran_away():
+	hasEscaped = true
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		get_tree().paused = true
@@ -39,6 +43,9 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:
 	if (Global.role.hunted == old && timeout):
 		Global.addScore()
+	elif (hasEscaped):
+		Global.addScore()
+		hasEscaped = false
 	elif (Global.role.hunted == old && !timeout):
 		Global.subtractScore()
 	elif (Global.role.hunter == old && !timeout):
