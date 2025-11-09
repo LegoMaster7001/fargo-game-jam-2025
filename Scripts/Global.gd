@@ -1,6 +1,6 @@
 extends Node2D
 
-const GAME_OVER_SCORE_THRESHOLD := 1
+const GAME_OVER_SCORE_THRESHOLD := 5
 const CHASE_DURATION := 10
 
 signal role_changed(old_role: role, role: role, timeout: bool)
