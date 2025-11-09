@@ -97,3 +97,6 @@ func _on_stuck_timer_timeout() -> void:
 	
 func getOverlappingBodies():
 	return $Area2DTest.get_overlapping_bodies()
+	
+func getTagCooldownTimer():
+	return tag_checker.debounce_timer.time_left
