@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://ufx7dl6fr7y4"]
+[gd_scene load_steps=13 format=3 uid="uid://ufx7dl6fr7y4"]
 
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Script" uid="uid://cqyajja4anlcm" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://b4wuj2c3id5bc" path="res://Images/EnemyAngry.png" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://d0v4u8wbaq2ur" path="res://Images/PlayerRunAway.png" id="2_48xlc"]
 [ext_resource type="Texture2D" uid="uid://bh8hsv13pmu0f" path="res://Images/MainMenu.png" id="2_opfnp"]
 [ext_resource type="Texture2D" uid="uid://1mpv5uxgxa0e" path="res://Images/EnemyRunAway.png" id="4_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://dej77bbsjks0q" path="res://Images/PlayerAngry.png" id="5_n45e2"]
 [ext_resource type="Texture2D" uid="uid://duc3bgkxq0r8t" path="res://Images/text/Title_text_outlined.png" id="7_cp0ys"]
+[ext_resource type="AudioStream" uid="uid://2qp2xkj2xts7" path="res://Sounds/start.wav" id="8_yhxw7"]
 
 [sub_resource type="Animation" id="Animation_n45e2"]
 length = 0.001
@@ -74,7 +75,7 @@ _data = {
 &"chase_right": SubResource("Animation_ce3w2")
 }
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("animation_timer", "animation_player")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("start_audio", "animation_timer", "animation_player")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,6 +83,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1ehe0")
+start_audio = NodePath("AudioStreamPlayer")
 animation_timer = NodePath("AnimationIntermissionTimer")
 animation_player = NodePath("AnimationPlayer")
 
@@ -161,3 +163,6 @@ grow_vertical = 2
 scale = Vector2(1.6, 1.6)
 pivot_offset = Vector2(309, 100)
 texture = ExtResource("7_cp0ys")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_yhxw7")

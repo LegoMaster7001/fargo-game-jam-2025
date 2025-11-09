@@ -2,9 +2,10 @@ class_name Player
 extends CharacterBody2D
 
 const speed = 100
-const dashSpeed = 2
+const dashSpeed = 1.5
 
 @export var groundies_area: Area2D
+@export var dash_audio: AudioStreamPlayer
 var dir : Vector2
 var dashReady = true
 var dashing = false
@@ -29,13 +30,18 @@ func _unhandled_input(event: InputEvent):
 		groundies_area.try_call_groundies()
 
 	if event.is_action_pressed("debug_flip_role"):
-		Global.flip_role(false)
+		Global.flip_role(true)
 
 func checkDashing():
-	if Input.is_key_pressed(KEY_E) && dashReady && Global.player_is_hunter:
+	if ((Input.is_key_pressed(KEY_E) && dashReady) && Global.player_is_hunter):
 		dashReady = false
 		dashing = true
 		$DashTimer.start()
+		dash_audio.play()
+	elif (Global.player_is_hunted):
+		dashReady = true
+		dashing = false
+		
 	if dashing:
 		velocity = dir * speed * dashSpeed
 

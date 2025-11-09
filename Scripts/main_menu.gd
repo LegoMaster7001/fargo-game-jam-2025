@@ -2,6 +2,7 @@ extends Control
 
 const GAME_SCENE_PATH := "res://Scenes/Game.tscn"
 
+@export var start_audio: AudioStreamPlayer
 @export var animation_timer: Timer
 @export var animation_player: AnimationPlayer
 
@@ -15,6 +16,8 @@ func _ready() -> void:
 func _unhandled_key_input(event: InputEvent) -> void:
 	if not event.is_pressed():
 		return
+	start_audio.play()
+	await start_audio.finished
 	SceneSwitcher.goto_scene(GAME_SCENE_PATH)
 
 func get_next_animation_idx() -> int:
