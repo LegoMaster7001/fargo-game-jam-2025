@@ -11,6 +11,8 @@ var HUNT_TEXT_TEXTURE = ResourceLoader.load("res://Images/text/hunt_text_outline
 
 @export var role_texture: TextureRect
 @export var time_label: Label
+@export var cooldown_timer_label : Label
+@export var cooldown_label : Label
 @export var scoreBox: TextEdit
 @export var compass: Compass
 @export var pause_menu: PauseMenu
@@ -26,6 +28,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	time_label.text = TIME_FORMAT % [Global.chase_timer.time_left]
+	cooldown_timer_label.text = TIME_FORMAT % [currentCooldownTimer()]
+	cooldown_label.text = currentCooldownName()
 	var player_to_enemy := player.position.direction_to(enemy.position)
 	compass.update_needle(player_to_enemy, delta)
 
@@ -75,3 +79,13 @@ func update_compass_visibity():
 func update_text():
 	role_texture.texture = HUNT_TEXT_TEXTURE if Global.player_is_hunter else HIDE_TEXT_TEXTURE
 	scoreBox.text = ("Score " + str(Global.score))
+	
+func currentCooldownTimer():
+	if Global.player_is_hunted:
+		return groundiesArea._get_cooldown_timer()
+	return player._get_cooldown_time()
+
+func currentCooldownName():
+	if Global.player_is_hunted:
+		return "Groundies Cooldown"
+	return "Dash Cooldown"
