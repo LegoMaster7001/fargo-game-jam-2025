@@ -189,3 +189,4 @@ enemy = NodePath("../../Enemy")
 pause_menu = NodePath("../PauseMenu")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("14_wxwew")]
+visible = false
