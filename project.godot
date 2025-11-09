@@ -19,6 +19,7 @@ config/icon="res://Images/icon.svg"
 
 Global="*res://Scripts/Global.gd"
 SceneSwitcher="*res://Scripts/scene_switcher.gd"
+MusicPlayer="*res://Scenes/music_player.tscn"
 
 [display]
 
