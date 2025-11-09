@@ -101,6 +101,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_raj38"]
 texture = ExtResource("8_3so38")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_x3xnh")
 
@@ -118,7 +119,7 @@ sources/3 = SubResource("TileSetAtlasSource_tfod6")
 sources/4 = SubResource("TileSetAtlasSource_rajel")
 sources/5 = SubResource("TileSetAtlasSource_vvhu1")
 sources/6 = SubResource("TileSetAtlasSource_lbihj")
-sources/7 = SubResource("TileSetAtlasSource_raj38")
+sources/8 = SubResource("TileSetAtlasSource_raj38")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kldst"]
 size = Vector2(16, 32)
