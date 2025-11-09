@@ -21,8 +21,10 @@ texture = ExtResource("2_cvnsp")
 shape = SubResource("CircleShape2D_gl6un")
 
 [node name="DashCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.8
 
 [connection signal="timeout" from="DashCooldownTimer" to="." method="_on_dash_cooldown_timer_timeout"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
