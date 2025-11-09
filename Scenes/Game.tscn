@@ -187,3 +187,6 @@ shape = SubResource("RectangleShape2D_kldst")
 player = NodePath("../../Player")
 enemy = NodePath("../../Enemy")
 groundiesArea = NodePath("../../GroundiesArea")
+
+[connection signal="area_entered" from="GroundiesArea" to="GroundiesArea" method="_on_area_entered"]
+[connection signal="body_shape_entered" from="GroundiesArea" to="GroundiesArea" method="_on_body_shape_entered"]

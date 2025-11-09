@@ -79,3 +79,6 @@ func checkIfStuck():
 
 func _on_stuck_timer_timeout() -> void:
 	stuckTimerIsRunning = false
+	
+func getOverlappingBodies():
+	return $Area2DTest.get_overlapping_bodies()

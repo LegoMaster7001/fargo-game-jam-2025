@@ -21,9 +21,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	time_label.text = TIME_FORMAT % [Global.chase_timer.time_left]
 
-func _on_groundies_called(isInArea):
-	print(isInArea)
-	self.isInArea = isInArea
+func _on_groundies_called(isThereSomethingInArea):
+	isInArea = isThereSomethingInArea
 	
 
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:

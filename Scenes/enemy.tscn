@@ -62,6 +62,11 @@ target_position = Vector2(-100, 0)
 
 [node name="StuckTimer" type="Timer" parent="."]
 
+[node name="Area2DTest" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DTest"]
+shape = SubResource("CircleShape2D_b2bpf")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_exited" from="HuntArea" to="." method="_on_hunt_area_body_exited"]
 [connection signal="timeout" from="StuckTimer" to="." method="_on_stuck_timer_timeout"]
