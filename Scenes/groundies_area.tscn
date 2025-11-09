@@ -14,3 +14,6 @@ stream = ExtResource("2_6pxps")
 
 [node name="GroundedFailAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_nhsnj")
+
+[node name="groundiesCooldownTimer" type="Timer" parent="."]
+one_shot = true
