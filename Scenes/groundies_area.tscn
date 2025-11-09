@@ -6,4 +6,5 @@
 script = ExtResource("1_q8jfx")
 
 [node name="groundiesCooldownTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
