@@ -18,7 +18,6 @@ var chase_timer := Timer.new()
 
 func _ready() -> void:
 	chase_timer.wait_time = CHASE_DURATION
-	chase_timer.autostart = true
 	chase_timer.timeout.connect(_on_timeout)
 	add_child(chase_timer)
 
@@ -40,3 +39,4 @@ func subtractScore():
 func _on_timeout() -> void:
 	# TODO: deduct a point
 	Global.flip_role(true)
+	chase_timer.start()

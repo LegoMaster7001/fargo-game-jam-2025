@@ -1,6 +1,7 @@
 [gd_scene load_steps=32 format=4 uid="uid://cxee8n6fod8oc"]
 
 [ext_resource type="Texture2D" uid="uid://cvj7th2nvu8uj" path="res://Images/2pixels.png" id="1_j5yw3"]
+[ext_resource type="Script" path="res://Scripts/game.gd" id="1_wxwew"]
 [ext_resource type="Texture2D" uid="uid://dk80ljltcudh8" path="res://Images/GameJam Wall Tile.png" id="2_3so38"]
 [ext_resource type="PackedScene" uid="uid://ktvyw4a0tc03" path="res://Scenes/player.tscn" id="2_j5yw3"]
 [ext_resource type="PackedScene" uid="uid://lrookntm6kpp" path="res://Scenes/enemy.tscn" id="3_kldst"]
@@ -12,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://7iqcu4j4skqk" path="res://Images/floor 2.png" id="7_alh3a"]
 [ext_resource type="Texture2D" uid="uid://c535i1mamraju" path="res://Images/floor 6.png" id="8_3so38"]
 [ext_resource type="Texture2D" uid="uid://cxa05suxxfyas" path="res://Images/floor 1.png" id="8_4q8tf"]
+[ext_resource type="PackedScene" path="res://Scenes/pause_menu.tscn" id="14_wxwew"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3so38"]
 vertices = PackedVector2Array(16, 16, -16, 16, -16, -16, 16, -16)
@@ -128,6 +130,7 @@ size = Vector2(32, 32)
 size = Vector2(32, 16)
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource("1_wxwew")
 scale = Vector2(0.5, 0.5)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -183,10 +186,14 @@ shape = SubResource("RectangleShape2D_kldst")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HUD" parent="CanvasLayer" node_paths=PackedStringArray("player", "enemy", "groundiesArea") instance=ExtResource("5_b2bpf")]
+[node name="HUD" parent="CanvasLayer" node_paths=PackedStringArray("player", "enemy", "pause_menu", "groundiesArea") instance=ExtResource("5_b2bpf")]
 player = NodePath("../../Player")
 enemy = NodePath("../../Enemy")
+pause_menu = NodePath("../PauseMenu")
 groundiesArea = NodePath("../../GroundiesArea")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("14_wxwew")]
+visible = false
 
 [connection signal="area_entered" from="GroundiesArea" to="GroundiesArea" method="_on_area_entered"]
 [connection signal="body_shape_entered" from="GroundiesArea" to="GroundiesArea" method="_on_body_shape_entered"]
