@@ -38,10 +38,14 @@ func _on_groundies_called(isInAreaWhenGroundies):
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
-		get_tree().paused = true
-		pause_menu.show()
+		pause_game()
 	if event.is_action_pressed("debug_end_game"):
 		end_game()
+
+func pause_game():
+	get_tree().paused = true
+	pause_menu.show()
+	pause_menu.audio.play()
 
 func end_game():
 	Global.game_over = true

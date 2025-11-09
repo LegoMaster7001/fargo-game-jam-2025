@@ -5,6 +5,7 @@ const speed = 100
 const dashSpeed = 1.5
 
 @export var groundies_area: Area2D
+@export var dash_audio: AudioStreamPlayer
 var dir : Vector2
 var dashReady = true
 var dashing = false
@@ -36,6 +37,7 @@ func checkDashing():
 		dashReady = false
 		dashing = true
 		$DashTimer.start()
+		dash_audio.play()
 	elif (Global.player_is_hunted):
 		dashReady = true
 		dashing = false
