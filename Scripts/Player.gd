@@ -4,7 +4,7 @@ extends CharacterBody2D
 const speed = 100
 const dashSpeed = 2
 
-@export var groundies_area: GroundiesArea
+@export var groundies_area: Area2D
 var dir : Vector2
 var dashReady = true
 var dashing = false
