@@ -32,9 +32,6 @@ func _physics_process(delta: float) -> void:
 func _on_groundies_called(isInAreaWhenGroundies):
 	isInArea = isInAreaWhenGroundies
 	
-func _on_ran_away():
-	hasEscaped = true
-	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		pause_game()
@@ -56,9 +53,6 @@ func end_game():
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:
 	if (Global.role.hunted == old && timeout):
 		Global.addScore()
-	elif (hasEscaped):
-		Global.addScore()
-		hasEscaped = false
 	elif (Global.role.hunted == old && !timeout):
 		Global.subtractScore()
 	elif (Global.role.hunter == old && !timeout):
