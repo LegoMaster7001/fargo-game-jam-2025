@@ -25,6 +25,7 @@ func _ready() -> void:
 	update_compass_visibity()
 	Global.role_changed.connect(_on_role_changed)
 	groundiesArea.groundiesCalled.connect(_on_groundies_called)
+	Global.score_changed.connect(_on_score_changed)
 
 func _physics_process(delta: float) -> void:
 	time_label.text = TIME_FORMAT % [Global.chase_timer.time_left]
@@ -69,7 +70,7 @@ func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> 
 	update_compass_visibity()
 
 func _on_score_changed(score: int) -> void:
-	if not Global.game_over:
+	if not Global.should_game_over:
 		return
 	end_game()
 
