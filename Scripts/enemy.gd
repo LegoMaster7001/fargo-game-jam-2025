@@ -35,7 +35,7 @@ func makepath():
 	if (checkIfStuck()):
 		nav_agent.target_position = Vector2(0, 0)
 
-func _on_role_changed(hunted: bool) -> void:
+func _on_role_changed(old_role: Global.role, role: Global.role, timeout: bool) -> void:
 	makepath()
 
 func _on_timer_timeout():
