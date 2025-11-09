@@ -24,8 +24,8 @@ func _physics_process(delta: float):
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent):
-	dir.x = Input.get_axis("ui_left", "ui_right")
-	dir.y = Input.get_axis("ui_up", "ui_down")
+	dir.x = Input.get_axis("move_left", "move_right")
+	dir.y = Input.get_axis("move_up", "move_down")
 	dir = dir.normalized()
 
 	if event.is_action_pressed("call_groundies"):
