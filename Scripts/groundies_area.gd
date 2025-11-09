@@ -3,7 +3,7 @@ extends Area2D
 
 @export var enemy: Enemy
 @onready var collisionShapes = get_children()
-var ShapeToDelete
+var ShapeToDelete : CollisionShape2D
 
 signal groundiesCalled(BodiesInArea)
 
@@ -17,8 +17,11 @@ func try_call_groundies() -> bool:
 		return false
 	Global.flip_role(true)
 	groundiesCalled.emit(true)
-	ShapeToDelete.queue_free()
-	collisionShapes.erase(ShapeToDelete) 
+	ShapeToDelete.shape.size = Vector2 (0, 0)
+	var mesh2d : MeshInstance2D
+	mesh2d = ShapeToDelete.get_child(0)
+	mesh2d.modulate.a = 0.5
+	collisionShapes.erase(ShapeToDelete)
 	return true
 	
 
