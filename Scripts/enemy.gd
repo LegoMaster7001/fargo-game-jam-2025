@@ -73,13 +73,13 @@ func changeSprites():
 func changeSpeed():
 	match Global.score:
 		1:
-			speed = 80
+			speed = 70 
 		2:
-			speed = 85
+			speed = 80
 		3:
-			speed = 90
+			speed = 85
 		4:
-			speed = 100
+			speed = 95
 		_:
 			speed = 60
 
