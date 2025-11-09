@@ -1,7 +1,7 @@
 class_name Enemy
 extends CharacterBody2D
 
-const speed = 80
+var speed
 
 
 @export var player: Node2D
@@ -15,11 +15,13 @@ const speed = 80
 @onready var rayRight = $Rays/Right
 var stuckTimerIsRunning = false
 
+signal hasPlayerEscaped()
 
 func _ready() -> void:
 	Global.role_changed.connect(_on_role_changed)
 
 func _physics_process(delta: float) -> void:
+	changeSpeed()
 	var dir = to_local(nav_agent.get_next_path_position()).normalized()
 	velocity = dir * speed
 	move_and_slide()
@@ -46,6 +48,7 @@ func _on_hunt_area_body_exited(body: Node2D) -> void:
 		return
 	# the player has escaped, so now we become hunted
 	print("{0} escaped".format([body.name]))
+	hasPlayerEscaped.emit()
 	Global.flip_role(false)
 	
 func changeSprites():
@@ -66,6 +69,20 @@ func changeSprites():
 		_:
 			$Sprite2D.texture = load(SpriteFile + "Enemy1.png")
 		
+		
+func changeSpeed():
+	match Global.score:
+		1:
+			speed = 80
+		2:
+			speed = 85
+		3:
+			speed = 90
+		4:
+			speed = 100
+		_:
+			speed = 60
+
 func checkIfStuck():
 	if(!stuckTimerIsRunning):
 		if (rayDown.is_colliding() || rayUp.is_colliding()):
