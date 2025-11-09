@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://ufx7dl6fr7y4"]
 
-[ext_resource type="Script" path="res://Scenes/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="Script" uid="uid://cqyajja4anlcm" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://b4wuj2c3id5bc" path="res://Images/EnemyAngry.png" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://d0v4u8wbaq2ur" path="res://Images/PlayerRunAway.png" id="2_48xlc"]
 [ext_resource type="Texture2D" uid="uid://bh8hsv13pmu0f" path="res://Images/MainMenu.png" id="2_opfnp"]
