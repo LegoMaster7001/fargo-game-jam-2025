@@ -2,6 +2,8 @@ class_name GroundiesArea
 extends Area2D
 
 @export var enemy: Enemy
+@export var grounded_audio: AudioStreamPlayer
+@export var grounded_fail_audio: AudioStreamPlayer
 @onready var collisionShapes = find_children("*", "CollisionShape2D")
 @onready var meshes = find_children("*", "MeshInstance2D")
 
@@ -12,11 +14,13 @@ signal groundiesCalled(BodiesInArea)
 
 func try_call_groundies() -> bool:
 	if not overlaps_body(enemy):
+		grounded_fail_audio.play()
 		groundiesCalled.emit(false)
 		return false
 	if Global.player_is_hunter:
 		groundiesCalled.emit(false)
 		return false
+	grounded_audio.play()
 	Global.flip_role(true)
 	groundiesCalled.emit(true)
 	
