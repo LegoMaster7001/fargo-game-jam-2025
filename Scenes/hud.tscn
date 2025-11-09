@@ -1,7 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://8045sgtb8mph"]
 
 [ext_resource type="Script" uid="uid://cjml38bf5i315" path="res://Scripts/hud.gd" id="1_e0onf"]
-[ext_resource type="Script" uid="uid://ckdqkyv1wpqa5" path="res://Scripts/ScoreKeeping.gd" id="2_fccik"]
 [ext_resource type="Script" uid="uid://doft2q4alty4t" path="res://Scripts/compass.gd" id="3_bjfho"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gfia"]
