@@ -1,9 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwp83sci60oxi"]
+[gd_scene load_steps=4 format=3 uid="uid://cwp83sci60oxi"]
 
 [ext_resource type="Script" uid="uid://dcdbortnn42t0" path="res://Scripts/groundies_area.gd" id="1_q8jfx"]
+[ext_resource type="AudioStream" uid="uid://bjikm404ht6ed" path="res://Sounds/grounded.wav" id="2_6pxps"]
+[ext_resource type="AudioStream" uid="uid://ccn23ixuokdhr" path="res://Sounds/grounded_fail.wav" id="3_nhsnj"]
 
-[node name="GroundiesArea" type="Area2D"]
+[node name="GroundiesArea" type="Area2D" node_paths=PackedStringArray("grounded_audio", "grounded_fail_audio")]
 script = ExtResource("1_q8jfx")
+grounded_audio = NodePath("GroundedAudio")
+grounded_fail_audio = NodePath("GroundedFailAudio")
+
+[node name="GroundedAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_6pxps")
+
+[node name="GroundedFailAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nhsnj")
 
 [node name="groundiesCooldownTimer" type="Timer" parent="."]
 wait_time = 2.0
