@@ -15,7 +15,6 @@ var speed
 @onready var rayRight = $Rays/Right
 var stuckTimerIsRunning = false
 
-signal hasPlayerEscaped()
 
 func _ready() -> void:
 	Global.role_changed.connect(_on_role_changed)
@@ -48,8 +47,7 @@ func _on_hunt_area_body_exited(body: Node2D) -> void:
 		return
 	# the player has escaped, so now we become hunted
 	print("{0} escaped".format([body.name]))
-	hasPlayerEscaped.emit()
-	Global.flip_role(false)
+	Global.flip_role(true)
 	
 func changeSprites():
 	var SpriteFile = "res://Images/"
