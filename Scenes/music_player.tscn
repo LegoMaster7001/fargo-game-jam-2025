@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://brct0en50d502"]
+[gd_scene load_steps=3 format=3 uid="uid://brct0en50d502"]
 
 [ext_resource type="AudioStream" uid="uid://qysy6f2aybd" path="res://Sounds/music/Three Red Hearts - Penultimate.ogg" id="1_ous86"]
+[ext_resource type="Script" uid="uid://cnyga5denxupa" path="res://Scripts/music_player.gd" id="2_kwwjb"]
 
 [node name="MusicPlayer" type="AudioStreamPlayer"]
 stream = ExtResource("1_ous86")
 volume_db = -16.0
 autoplay = true
 parameters/looping = true
+script = ExtResource("2_kwwjb")

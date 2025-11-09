@@ -54,7 +54,7 @@ func end_game():
 	get_tree().paused = true
 	hide()
 	game_over_screen.show()
-	game_over_screen.animate()
+	game_over_screen.do_game_over_stuff()
 
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:
 	if (Global.role.hunted == old && timeout):
