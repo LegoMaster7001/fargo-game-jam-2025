@@ -43,6 +43,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		end_game()
 
 func end_game():
+	Global.game_over = true
 	get_tree().paused = true
 	hide()
 	game_over_screen.show()

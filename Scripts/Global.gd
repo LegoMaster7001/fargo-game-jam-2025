@@ -12,7 +12,9 @@ var score: int = 0 :
 	set(value):
 		score = value
 		score_changed.emit(value)
-var game_over: int :
+
+var game_over := false
+var should_game_over: bool :
 	get(): return abs(score) >= GAME_OVER_SCORE_THRESHOLD
 
 var player_is_hunted: bool :
