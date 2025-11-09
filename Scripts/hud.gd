@@ -5,28 +5,38 @@ const TIME_FORMAT = "%.1f"
 
 @export var player: Player
 @export var enemy: Enemy
+@export var groundiesArea: GroundiesArea
 
 @export var role_label: Label
 @export var time_label: Label
 @export var scoreBox: TextEdit
 @export var compass: Compass
+var isInArea = false
 
 func _ready() -> void:
 	update_text()
 	Global.role_changed.connect(_on_role_changed)
+	groundiesArea.groundiesCalled.connect(_on_groundies_called)
 
 func _physics_process(delta: float) -> void:
 	time_label.text = TIME_FORMAT % [Global.chase_timer.time_left]
+
+func _on_groundies_called(isInArea):
+	print(isInArea)
+	self.isInArea = isInArea
+	
 
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:
 	if (Global.role.hunted == old && timeout):
 		Global.addScore()
 	elif (Global.role.hunted == old && !timeout):
 		Global.subtractScore()
-	elif (Global.role.hunter == old && timeout):
-		Global.subtractScore()
 	elif (Global.role.hunter == old && !timeout):
 		Global.addScore()
+	elif (isInArea):
+		Global.addScore()
+	elif (Global.role.hunter == old && timeout):
+		Global.subtractScore()
 	update_text()
 
 func update_text():
