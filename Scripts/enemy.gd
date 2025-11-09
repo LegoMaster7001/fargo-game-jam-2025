@@ -34,8 +34,8 @@ func makepath():
 	nav_agent.target_position = player.global_position
 	if (Global.player_is_hunter):
 		nav_agent.target_position = to_global(-self.to_local(player.global_position))
-	if (checkIfStuck()):
-		nav_agent.target_position = Vector2(0, 0)
+		if (checkIfStuck()):
+			nav_agent.target_position = Vector2(0, 0)
 
 func _on_role_changed(old_role: Global.role, role: Global.role, timeout: bool) -> void:
 	makepath()
