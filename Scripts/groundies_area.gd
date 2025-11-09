@@ -19,15 +19,14 @@ func try_call_groundies() -> bool:
 		return false
 	Global.flip_role(true)
 	groundiesCalled.emit(true)
-	var mesh = MeshInstance2D.new()
 	
-	var mesh2d = ShapeToDelete.get_child(0)
-	mesh2d.modulate.a = 0.5
+	ShapeToAdd.modulate.a = 0.5
 	ShapeToDelete.queue_free()
 	collisionShapes.erase(ShapeToDelete)
+	meshes.erase(ShapeToAdd)
 	return true
 	
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
 		ShapeToDelete = collisionShapes[local_shape_index]
-		meshes = collisionShapes[local_shape_index]
+		ShapeToAdd = meshes[local_shape_index]

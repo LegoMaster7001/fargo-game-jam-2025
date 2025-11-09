@@ -124,13 +124,13 @@ sources/8 = SubResource("TileSetAtlasSource_raj38")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kldst"]
 size = Vector2(16, 32)
 
-[sub_resource type="QuadMesh" id="QuadMesh_wxwew"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dahhg"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3so38"]
 size = Vector2(32, 16)
+
+[sub_resource type="QuadMesh" id="QuadMesh_wxwew"]
 
 [node name="Node2D" type="Node2D"]
 scale = Vector2(0.5, 0.5)
@@ -150,69 +150,69 @@ enemy = NodePath("../Enemy")
 position = Vector2(232, -96)
 shape = SubResource("RectangleShape2D_kldst")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="GroundiesArea/CollisionShape2D"]
-modulate = Color(0, 0, 0, 0)
-position = Vector2(1.1920929e-06, 2.861023e-06)
-scale = Vector2(16.000002, 32.000004)
-mesh = SubResource("QuadMesh_wxwew")
-
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="GroundiesArea"]
 position = Vector2(-224, 0)
 shape = SubResource("RectangleShape2D_dahhg")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="GroundiesArea/CollisionShape2D2"]
-modulate = Color(0, 0, 0, 0)
-position = Vector2(-6.4373107e-06, 2.861023e-06)
-scale = Vector2(31.999989, 32.000004)
-mesh = SubResource("QuadMesh_wxwew")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="GroundiesArea"]
 position = Vector2(-128, -64)
 shape = SubResource("RectangleShape2D_dahhg")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="GroundiesArea/CollisionShape2D3"]
-modulate = Color(0, 0, 0, 0)
-position = Vector2(-2.3841858e-06, 2.861023e-06)
-scale = Vector2(31.999998, 32.000004)
-mesh = SubResource("QuadMesh_wxwew")
-
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="GroundiesArea"]
 position = Vector2(-64, -144)
 shape = SubResource("RectangleShape2D_dahhg")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="GroundiesArea/CollisionShape2D4"]
-modulate = Color(0, 0, 0, 0)
-position = Vector2(-2.3841858e-06, 2.861023e-06)
-scale = Vector2(31.999998, 32.000004)
-mesh = SubResource("QuadMesh_wxwew")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="GroundiesArea"]
 position = Vector2(-224, -168)
 shape = SubResource("RectangleShape2D_3so38")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="GroundiesArea/CollisionShape2D5"]
-modulate = Color(0, 0, 0, 0)
-position = Vector2(-1.1205673e-05, 4.7683716e-06)
-scale = Vector2(31.999998, 15.999999)
-mesh = SubResource("QuadMesh_wxwew")
-
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="GroundiesArea"]
 position = Vector2(-112, 176)
 shape = SubResource("RectangleShape2D_dahhg")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="GroundiesArea/CollisionShape2D6"]
-modulate = Color(0, 0, 0, 0)
-position = Vector2(-2.3841858e-06, 2.861023e-06)
-scale = Vector2(31.999998, 32.000004)
-mesh = SubResource("QuadMesh_wxwew")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="GroundiesArea"]
 position = Vector2(200, 144)
 shape = SubResource("RectangleShape2D_kldst")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="GroundiesArea/CollisionShape2D7"]
+[node name="MeshInstance2D" type="MeshInstance2D" parent="GroundiesArea"]
 modulate = Color(0, 0, 0, 0)
-position = Vector2(1.1920929e-06, 2.861023e-06)
+position = Vector2(232, -96)
+scale = Vector2(16.000002, 32.000004)
+mesh = SubResource("QuadMesh_wxwew")
+
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="GroundiesArea"]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(-224, 2.861023e-06)
+scale = Vector2(31.999989, 32.000004)
+mesh = SubResource("QuadMesh_wxwew")
+
+[node name="MeshInstance2D3" type="MeshInstance2D" parent="GroundiesArea"]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(-128, -63.999996)
+scale = Vector2(31.999998, 32.000004)
+mesh = SubResource("QuadMesh_wxwew")
+
+[node name="MeshInstance2D4" type="MeshInstance2D" parent="GroundiesArea"]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(-64, -144)
+scale = Vector2(31.999998, 32.000004)
+mesh = SubResource("QuadMesh_wxwew")
+
+[node name="MeshInstance2D5" type="MeshInstance2D" parent="GroundiesArea"]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(-224.00002, -168)
+scale = Vector2(31.999998, 15.999999)
+mesh = SubResource("QuadMesh_wxwew")
+
+[node name="MeshInstance2D6" type="MeshInstance2D" parent="GroundiesArea"]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(-112, 176)
+scale = Vector2(31.999998, 32.000004)
+mesh = SubResource("QuadMesh_wxwew")
+
+[node name="MeshInstance2D7" type="MeshInstance2D" parent="GroundiesArea"]
+modulate = Color(0, 0, 0, 0)
+position = Vector2(200, 144)
 scale = Vector2(16.000002, 32.000004)
 mesh = SubResource("QuadMesh_wxwew")
 
