@@ -15,7 +15,6 @@ var speed
 @onready var rayRight = $Rays/Right
 var stuckTimerIsRunning = false
 
-signal hasPlayerEscaped()
 
 func _ready() -> void:
 	Global.role_changed.connect(_on_role_changed)
@@ -34,8 +33,8 @@ func makepath():
 	nav_agent.target_position = player.global_position
 	if (Global.player_is_hunter):
 		nav_agent.target_position = to_global(-self.to_local(player.global_position))
-	if (checkIfStuck()):
-		nav_agent.target_position = Vector2(0, 0)
+		if (checkIfStuck()):
+			nav_agent.target_position = Vector2(0, 0)
 
 func _on_role_changed(old_role: Global.role, role: Global.role, timeout: bool) -> void:
 	makepath()
@@ -48,8 +47,7 @@ func _on_hunt_area_body_exited(body: Node2D) -> void:
 		return
 	# the player has escaped, so now we become hunted
 	print("{0} escaped".format([body.name]))
-	hasPlayerEscaped.emit()
-	Global.flip_role(false)
+	Global.flip_role(true)
 	
 func changeSprites():
 	var SpriteFile = "res://Images/"
@@ -73,13 +71,13 @@ func changeSprites():
 func changeSpeed():
 	match Global.score:
 		1:
-			speed = 80
+			speed = 70 
 		2:
-			speed = 85
+			speed = 80
 		3:
-			speed = 90
+			speed = 85
 		4:
-			speed = 100
+			speed = 95
 		_:
 			speed = 60
 
