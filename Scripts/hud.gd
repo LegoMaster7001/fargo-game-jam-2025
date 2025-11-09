@@ -2,11 +2,13 @@ class_name HUD
 extends Control
 
 const TIME_FORMAT = "%.1f"
+var HIDE_TEXT_TEXTURE = ResourceLoader.load("res://Images/text/Hide_text_outlined.png")
+var HUNT_TEXT_TEXTURE = ResourceLoader.load("res://Images/text/hunt_text_outlined.png")
 
 @export var player: Player
 @export var enemy: Enemy
 
-@export var role_label: Label
+@export var role_texture: TextureRect
 @export var time_label: Label
 @export var scoreBox: TextEdit
 @export var compass: Compass
@@ -37,5 +39,5 @@ func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> 
 
 func update_text():
 	var text = "HUNT." if Global.player_is_hunter else "HIDE!"
-	role_label.text = text
+	role_texture.texture = HUNT_TEXT_TEXTURE if Global.player_is_hunter else HIDE_TEXT_TEXTURE
 	scoreBox.text = ("Score " + str(Global.score))

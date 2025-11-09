@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duc3bgkxq0r8t"
-path="res://.godot/imported/Title_text_outlined.png-a3d3806158f375e816820b48c5e1bea3.ctex"
+uid="uid://dmso1262sr0b3"
+path="res://.godot/imported/hunt_text.png-3839f191be6ec3cad47a80542870d93c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Title_text_outlined.png"
-dest_files=["res://.godot/imported/Title_text_outlined.png-a3d3806158f375e816820b48c5e1bea3.ctex"]
+source_file="res://Images/text/hunt_text.png"
+dest_files=["res://.godot/imported/hunt_text.png-3839f191be6ec3cad47a80542870d93c.ctex"]
 
 [params]
 
