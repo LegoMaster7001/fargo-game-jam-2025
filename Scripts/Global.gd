@@ -2,6 +2,7 @@ extends Node2D
 
 const GAME_OVER_SCORE_THRESHOLD := 5
 const CHASE_DURATION := 10
+const SLOW_DURATION := 0.5
 
 signal role_changed(old_role: role, role: role, timeout: bool)
 signal score_changed(score: int)
@@ -24,13 +25,20 @@ var player_is_hunter: bool :
 	get(): return current_role == role.hunter
 
 var chase_timer := Timer.new()
+var slow_timer := Timer.new()
 
 func _ready() -> void:
 	chase_timer.wait_time = CHASE_DURATION
 	chase_timer.timeout.connect(_on_timeout)
 	add_child(chase_timer)
 
+	slow_timer.wait_time = SLOW_DURATION
+	slow_timer.one_shot = true
+	add_child(slow_timer)
+
 func flip_role(timeout: bool):
+	if not timeout:
+		slow_timer.start()
 	chase_timer.start()
 	var temp = current_role
 	current_role = (current_role + 1) % role.size()
@@ -43,5 +51,4 @@ func subtractScore():
 	score -= 1
 
 func _on_timeout() -> void:
-	# TODO: deduct a point
 	Global.flip_role(true)

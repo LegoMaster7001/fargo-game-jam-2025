@@ -80,6 +80,8 @@ func changeSpeed():
 			speed = 95
 		_:
 			speed = 60
+	if Global.player_is_hunted && Global.slow_timer.time_left > 0:
+		speed *= 0.3
 
 func checkIfStuck():
 	if(!stuckTimerIsRunning):

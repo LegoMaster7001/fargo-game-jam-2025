@@ -17,6 +17,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float):
 	velocity = dir * speed
+	if Global.player_is_hunter && Global.slow_timer.time_left > 0:
+		velocity *= 0.5
 	checkDashing()
 	
 	move_and_slide()
