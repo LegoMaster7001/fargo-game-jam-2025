@@ -32,14 +32,13 @@ func _unhandled_input(event: InputEvent):
 		Global.flip_role(true)
 
 func checkDashing():
-	if ((Input.is_key_pressed(KEY_E) && dashReady) && Global.player_is_hunter):
+	if (Input.is_key_pressed(KEY_E) && dashReady && Global.player_is_hunter):
 		dashReady = false
 		dashing = true
 		$DashTimer.start()
 	elif (Global.player_is_hunted):
 		dashReady = true
 		dashing = false
-		
 	if dashing:
 		velocity = dir * speed * dashSpeed
 
@@ -58,3 +57,10 @@ func changeSprites():
 
 func _on_role_changed(old_role: Global.role, role: Global.role, timeout: bool) -> void:
 	changeSprites()
+	
+func _get_cooldown_time():
+	if (Global.player_is_hunter):
+		return $DashCooldownTimer.time_left
+	if (Global.player_is_hunted):
+		return 
+	return $DashCooldownTimer.time_left
