@@ -4,14 +4,14 @@ extends CharacterBody2D
 const speed = 100
 const dashSpeed = 2
 
-@export var groundies_area: GroundiesArea
+@export var groundies_area: Area2D
 var dir : Vector2
 var dashReady = true
 var dashing = false
 
 func _ready() -> void:
 	assert(groundies_area !=  null, "Player: assign groundies area")
-	_on_role_changed()
+	_on_role_changed(Global.current_role, Global.current_role, false)
 	Global.role_changed.connect(_on_role_changed)
 
 func _physics_process(delta: float):
@@ -32,7 +32,7 @@ func _unhandled_input(event: InputEvent):
 		Global.flip_role(false)
 
 func checkDashing():
-	if Input.is_key_pressed(KEY_E) && dashReady && Global.player_is_hunted:
+	if Input.is_key_pressed(KEY_E) && dashReady && Global.player_is_hunter:
 		dashReady = false
 		dashing = true
 		$DashTimer.start()
@@ -47,10 +47,10 @@ func _on_dash_timer_timeout():
 	$DashCooldownTimer.start()
 	
 func changeSprites():
-	if (!Global.player_is_hunted):
+	if (Global.player_is_hunted):
 		$Sprite2D.texture = load("res://Images/PlayerRunAway.png")
 	else:
 		$Sprite2D.texture = load("res://Images/PlayerAngry.png")
 
-func _on_role_changed() -> void:
+func _on_role_changed(old_role: Global.role, role: Global.role, timeout: bool) -> void:
 	changeSprites()

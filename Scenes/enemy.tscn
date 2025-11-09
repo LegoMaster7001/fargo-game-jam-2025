@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dsoej1015oup0" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Texture2D" uid="uid://b4wuj2c3id5bc" path="res://Images/EnemyAngry.png" id="2_1f0kj"]
-[ext_resource type="PackedScene" path="res://Scenes/tag_checker.tscn" id="3_afpow"]
+[ext_resource type="PackedScene" uid="uid://bxr0tfdg384og" path="res://Scenes/tag_checker.tscn" id="3_afpow"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b2bpf"]
 radius = 56.0
@@ -10,7 +10,7 @@ radius = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_1f0kj"]
 radius = 1000.0
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("tag_checker", "role_flip_timer")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("tag_checker")]
 scale = Vector2(0.125, 0.125)
 collision_layer = 2
 collision_mask = 5
@@ -18,7 +18,6 @@ motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_1f0kj")
 tag_checker = NodePath("TagChecker")
-role_flip_timer = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -62,6 +61,11 @@ target_position = Vector2(0, -100)
 target_position = Vector2(-100, 0)
 
 [node name="StuckTimer" type="Timer" parent="."]
+
+[node name="Area2DTest" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DTest"]
+shape = SubResource("CircleShape2D_b2bpf")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_exited" from="HuntArea" to="." method="_on_hunt_area_body_exited"]
