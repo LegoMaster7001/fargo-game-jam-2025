@@ -1,7 +1,7 @@
 [gd_scene load_steps=36 format=4 uid="uid://cxee8n6fod8oc"]
 
 [ext_resource type="Texture2D" uid="uid://cvj7th2nvu8uj" path="res://Images/2pixels.png" id="1_j5yw3"]
-[ext_resource type="Script" path="res://Scripts/game.gd" id="1_wxwew"]
+[ext_resource type="Script" uid="uid://drqffmtcj71lr" path="res://Scripts/game.gd" id="1_wxwew"]
 [ext_resource type="Texture2D" uid="uid://dk80ljltcudh8" path="res://Images/GameJam Wall Tile.png" id="2_3so38"]
 [ext_resource type="PackedScene" uid="uid://ktvyw4a0tc03" path="res://Scenes/player.tscn" id="2_j5yw3"]
 [ext_resource type="PackedScene" uid="uid://lrookntm6kpp" path="res://Scenes/enemy.tscn" id="3_kldst"]
@@ -14,7 +14,6 @@
 [ext_resource type="Texture2D" uid="uid://c535i1mamraju" path="res://Images/floor 6.png" id="8_3so38"]
 [ext_resource type="Texture2D" uid="uid://cxa05suxxfyas" path="res://Images/floor 1.png" id="8_4q8tf"]
 [ext_resource type="PackedScene" uid="uid://cqf61m6ckbe5l" path="res://Scenes/pause_menu.tscn" id="14_wxwew"]
-[ext_resource type="Texture2D" uid="uid://45ipywb5cnr0" path="res://Images/EnemyAngryPhases.png" id="15_acvyw"]
 [ext_resource type="PackedScene" uid="uid://brbwasvokje4v" path="res://Scenes/game_over.tscn" id="15_acvyw"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_3so38"]
@@ -242,10 +241,6 @@ game_over_screen = NodePath("../GameOver")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("14_wxwew")]
 visible = false
-
-[node name="EnemyAngryPhases" type="Sprite2D" parent="."]
-position = Vector2(-830, 14)
-texture = ExtResource("15_acvyw")
 
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("15_acvyw")]
 visible = false
