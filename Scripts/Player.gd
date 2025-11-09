@@ -63,8 +63,6 @@ func _on_role_changed(old_role: Global.role, role: Global.role, timeout: bool) -
 	changeSprites()
 	
 func _get_cooldown_time():
-	if (Global.player_is_hunter):
-		return $DashCooldownTimer.time_left
 	if (Global.player_is_hunted):
 		return 
-	return $DashCooldownTimer.time_left
+	return $DashCooldownTimer

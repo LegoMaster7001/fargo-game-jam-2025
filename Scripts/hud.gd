@@ -30,10 +30,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	time_label.text = TIME_FORMAT % [Global.chase_timer.time_left]
-	cooldown_timer_label.text = TIME_FORMAT % [currentCooldownTimer()]
-	cooldown_label.text = currentCooldownName()
 	var player_to_enemy := player.position.direction_to(enemy.position)
 	compass.update_needle(player_to_enemy, delta)
+	
+	AbilityCooldownVisibility()
 	tagCooldownTimerVisibility()
 
 func _on_groundies_called(isInAreaWhenGroundies):
@@ -102,3 +102,13 @@ func tagCooldownTimerVisibility():
 	else:
 		tag_cooldown_label.visible = true
 	tag_cooldown_label.text = "tag cooldown : "+ TIME_FORMAT % [currentTagCooldownTimer()]
+	
+func AbilityCooldownVisibility():
+	if currentCooldownTimer().is_stopped():
+		cooldown_timer_label.visible = false
+		cooldown_label.visible = false
+	else:
+		cooldown_timer_label.visible = true
+		cooldown_label.visible = true
+	cooldown_timer_label.text = TIME_FORMAT % [currentCooldownTimer().time_left]
+	cooldown_label.text = currentCooldownName()

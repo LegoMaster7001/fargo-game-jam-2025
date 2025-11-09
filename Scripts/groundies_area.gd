@@ -39,4 +39,4 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 		ShapeToAdd = meshes[local_shape_index]
 
 func _get_cooldown_timer():
-	return $groundiesCooldownTimer.time_left
+	return $groundiesCooldownTimer
