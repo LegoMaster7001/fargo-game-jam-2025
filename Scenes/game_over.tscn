@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://brbwasvokje4v"]
+
+[ext_resource type="Script" uid="uid://f5pvpf5nsqh4" path="res://Scripts/game_over_screen.gd" id="1_ek8ke"]
+[ext_resource type="Material" uid="uid://djyvahvhc5tkg" path="res://blur_material.tres" id="1_eoghk"]
+[ext_resource type="Texture2D" uid="uid://hfqtv16iyji3" path="res://Images/text/Game_over_text_outlined.png" id="2_ek8ke"]
+
+[node name="GameOver" type="Control" node_paths=PackedStringArray("overlay")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ek8ke")
+overlay = NodePath("ColorRect")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = ExtResource("1_eoghk")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(271, 79)
+texture = ExtResource("2_ek8ke")
