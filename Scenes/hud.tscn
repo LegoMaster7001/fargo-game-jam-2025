@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://8045sgtb8mph"]
+[gd_scene load_steps=6 format=3 uid="uid://8045sgtb8mph"]
 
 [ext_resource type="Script" uid="uid://cjml38bf5i315" path="res://Scripts/hud.gd" id="1_e0onf"]
 [ext_resource type="Script" uid="uid://doft2q4alty4t" path="res://Scripts/compass.gd" id="3_bjfho"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fccik"]
+font_size = 64
+font_color = Color(1, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3gfia"]
 font_size = 64
@@ -9,11 +13,7 @@ font_size = 64
 [sub_resource type="LabelSettings" id="LabelSettings_e0onf"]
 font_size = 32
 
-[sub_resource type="LabelSettings" id="LabelSettings_fccik"]
-font_size = 64
-font_color = Color(1, 0, 0, 1)
-
-[node name="HUD" type="Control" node_paths=PackedStringArray("role_label", "time_label", "compass", "scoreBox")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("role_label", "time_label", "scoreBox", "compass", "pause_menu")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,38 +25,7 @@ role_label = NodePath("RoleLabel")
 time_label = NodePath("TimeLabel")
 scoreBox = NodePath("Score")
 compass = NodePath("Compass")
-
-[node name="RoleLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "RUN"
-label_settings = SubResource("LabelSettings_3gfia")
-horizontal_alignment = 1
-
-[node name="Score" type="TextEdit" parent="."]
-layout_mode = 0
-offset_right = 174.0
-offset_bottom = 43.0
-
-[node name="TimeLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 80.0
-offset_right = 20.0
-offset_bottom = 103.0
-grow_horizontal = 2
-text = "0.0"
-label_settings = SubResource("LabelSettings_e0onf")
-horizontal_alignment = 1
+pause_menu = NodePath("")
 
 [node name="Compass" type="Control" parent="."]
 layout_mode = 1
@@ -87,3 +56,35 @@ text = "^"
 label_settings = SubResource("LabelSettings_fccik")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RoleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "[role]"
+label_settings = SubResource("LabelSettings_3gfia")
+horizontal_alignment = 1
+
+[node name="Score" type="TextEdit" parent="."]
+layout_mode = 0
+offset_right = 174.0
+offset_bottom = 43.0
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 80.0
+offset_right = 20.0
+offset_bottom = 103.0
+grow_horizontal = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_e0onf")
+horizontal_alignment = 1

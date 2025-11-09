@@ -10,6 +10,7 @@ const TIME_FORMAT = "%.1f"
 @export var time_label: Label
 @export var scoreBox: TextEdit
 @export var compass: Compass
+@export var pause_menu: PauseMenu
 
 func _ready() -> void:
 	update_text()
@@ -17,6 +18,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	time_label.text = TIME_FORMAT % [Global.chase_timer.time_left]
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause"):
+		get_tree().paused = true
+		pause_menu.show()
 
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:
 	if (Global.role.hunted == old && timeout):

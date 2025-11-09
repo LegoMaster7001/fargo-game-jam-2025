@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://8d2q85cflso4"]
+[gd_scene load_steps=12 format=3 uid="uid://8d2q85cflso4"]
 
 [ext_resource type="Script" uid="uid://cqyajja4anlcm" path="res://Scenes/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="Texture2D" uid="uid://b4wuj2c3id5bc" path="res://Images/EnemyAngry.png" id="1_28flt"]
@@ -6,16 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bh8hsv13pmu0f" path="res://Images/MainMenu.png" id="2_opfnp"]
 [ext_resource type="Texture2D" uid="uid://1mpv5uxgxa0e" path="res://Images/EnemyRunAway.png" id="4_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://dej77bbsjks0q" path="res://Images/PlayerAngry.png" id="5_n45e2"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_48xlc"]
-font_size = 128
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_1ehe0"]
-font_size = 32
-outline_size = 16
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://duc3bgkxq0r8t" path="res://Images/Title_text_outlined.png" id="7_cp0ys"]
 
 [sub_resource type="Animation" id="Animation_n45e2"]
 length = 0.001
@@ -147,37 +138,26 @@ offset_bottom = 40.0
 scale = Vector2(8, 8)
 texture = ExtResource("5_n45e2")
 
-[node name="Title" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -183.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "GROUNDIES"
-label_settings = SubResource("LabelSettings_48xlc")
-horizontal_alignment = 1
-
-[node name="Prompt" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -6.0
-offset_bottom = 169.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "PRESS ANYTHING TO PLAY"
-label_settings = SubResource("LabelSettings_1ehe0")
-horizontal_alignment = 1
-
 [node name="AnimationIntermissionTimer" type="Timer" parent="."]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_opfnp")
 }
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -309.5
+offset_top = -100.0
+offset_right = 309.5
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.6, 1.6)
+pivot_offset = Vector2(309, 100)
+texture = ExtResource("7_cp0ys")
