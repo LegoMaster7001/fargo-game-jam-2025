@@ -29,6 +29,7 @@ func _ready() -> void:
 	add_child(chase_timer)
 
 func flip_role(timeout: bool):
+	chase_timer.start()
 	var temp = current_role
 	current_role = (current_role + 1) % role.size()
 	Global.role_changed.emit(temp, Global.current_role, timeout)
@@ -42,4 +43,3 @@ func subtractScore():
 func _on_timeout() -> void:
 	# TODO: deduct a point
 	Global.flip_role(true)
-	chase_timer.start()
