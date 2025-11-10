@@ -30,6 +30,7 @@ func _unhandled_input(event: InputEvent):
 		groundies_area.try_call_groundies()
 
 	if event.is_action_pressed("debug_flip_role"):
+		Global.addTime(false)
 		Global.flip_role(true)
 
 func checkDashing():

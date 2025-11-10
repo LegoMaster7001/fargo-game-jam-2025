@@ -13,7 +13,7 @@ var HUNT_TEXT_TEXTURE = ResourceLoader.load("res://Images/text/hunt_text_outline
 @export var time_label: Label
 @export var cooldown_timer_label : Label
 @export var cooldown_label : Label
-@export var scoreBox: TextEdit
+@export var scoreLabel: Label
 @export var compass: Compass
 @export var pause_menu: PauseMenu
 @export var game_over_screen: GameOverScreen
@@ -79,7 +79,7 @@ func update_compass_visibity():
 
 func update_text():
 	role_texture.texture = HUNT_TEXT_TEXTURE if Global.player_is_hunter else HIDE_TEXT_TEXTURE
-	scoreBox.text = ("Score " + str(Global.score))
+	scoreLabel.text = ("Score: " + str(Global.score))
 	
 func currentCooldownTimer():
 	if Global.player_is_hunted:
