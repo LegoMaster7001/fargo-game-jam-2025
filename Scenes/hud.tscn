@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://8045sgtb8mph"]
+[gd_scene load_steps=7 format=3 uid="uid://8045sgtb8mph"]
 
 [ext_resource type="Script" uid="uid://cjml38bf5i315" path="res://Scripts/hud.gd" id="1_e0onf"]
 [ext_resource type="Texture2D" uid="uid://bh63y3lp31w4j" path="res://Images/compass_arrow.png" id="3_6fbih"]
@@ -10,7 +10,12 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("role_texture", "time_label", "cooldown_timer_label", "cooldown_label", "tag_cooldown_label", "scoreBox", "compass")]
+[sub_resource type="LabelSettings" id="LabelSettings_6fbih"]
+font_size = 32
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="Control" node_paths=PackedStringArray("role_texture", "time_label", "cooldown_timer_label", "cooldown_label", "tag_cooldown_label", "scoreLabel", "compass")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,8 +27,8 @@ role_texture = NodePath("RoleTexture")
 time_label = NodePath("TimeLabel")
 cooldown_timer_label = NodePath("CooldownTimer")
 cooldown_label = NodePath("CooldownName")
+scoreLabel = NodePath("ScoreLabel")
 tag_cooldown_label = NodePath("TagCooldownTimer")
-scoreBox = NodePath("Score")
 compass = NodePath("Compass")
 
 [node name="Compass" type="Control" parent="."]
@@ -49,11 +54,6 @@ offset_top = -80.0
 offset_right = 52.0
 offset_bottom = -16.0
 texture = ExtResource("3_6fbih")
-
-[node name="Score" type="TextEdit" parent="."]
-layout_mode = 0
-offset_right = 174.0
-offset_bottom = 43.0
 
 [node name="TimeLabel" type="Label" parent="."]
 layout_mode = 1
@@ -108,6 +108,14 @@ grow_horizontal = 2
 text = "0.0"
 label_settings = SubResource("LabelSettings_e0onf")
 horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 17.0
+offset_right = 101.04348
+offset_bottom = 59.0
+label_settings = SubResource("LabelSettings_6fbih")
 
 [node name="TagCooldownTimer" type="Label" parent="."]
 layout_mode = 1

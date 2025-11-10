@@ -23,6 +23,7 @@ func try_call_groundies() -> bool:
 			groundiesCalled.emit(false)
 			return false
 		grounded_audio.play()
+		Global.addTime(false)
 		Global.flip_role(true)
 		groundiesCalled.emit(true)
 		
