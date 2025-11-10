@@ -68,3 +68,4 @@ func restart():
 	current_role = role.hunted
 	score = -1
 	game_over = false
+	total_time = 0
