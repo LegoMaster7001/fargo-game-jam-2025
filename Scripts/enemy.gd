@@ -17,6 +17,7 @@ var stuckTimerIsRunning = false
 
 
 func _ready() -> void:
+	changeSprites()
 	Global.role_changed.connect(_on_role_changed)
 
 func _physics_process(delta: float) -> void:

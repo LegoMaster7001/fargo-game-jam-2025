@@ -22,13 +22,14 @@ var isInArea = false
 var hasEscaped = false
 
 func _ready() -> void:
-	update_text()
-	update_compass_visibity()
 	Global.role_changed.connect(_on_role_changed)
 	groundiesArea.groundiesCalled.connect(_on_groundies_called)
+	_on_score_changed(Global.score)
 	Global.score_changed.connect(_on_score_changed)
 
 func _physics_process(delta: float) -> void:
+	update_text()
+	update_compass_visibity()
 	time_label.text = TIME_FORMAT % [Global.chase_timer.time_left]
 	cooldown_timer_label.text = TIME_FORMAT % [currentCooldownTimer()]
 	cooldown_label.text = currentCooldownName()

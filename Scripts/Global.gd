@@ -52,3 +52,10 @@ func subtractScore():
 
 func _on_timeout() -> void:
 	Global.flip_role(true)
+
+func restart():
+	MusicPlayer.stream = MusicPlayer.DEFAULT_MUSIC
+	MusicPlayer.play()
+	current_role = role.hunted
+	score = 0
+	game_over = false
