@@ -9,7 +9,9 @@ var game_time = " seconds"
 @export var title: Control
 @export var victory_label: RichTextLabel
 @export var gametimelabel: Label
+@export var input_help: Label
 
+@onready var _input_init_pos := input_help.position
 @onready var _title_initial_pos := title.position
 
 func do_game_over_stuff():
@@ -31,6 +33,10 @@ func do_game_over_stuff():
 	tween.tween_property(title, "modulate", title_color, 0.8).from(Color.TRANSPARENT)
 
 	tween.tween_property(victory_label, "modulate", Color.WHITE, 0.8).from(Color.TRANSPARENT)
+
+	var input_start := _input_init_pos + Vector2(0, get_viewport_rect().size.y)
+	input_help.position = input_start
+	tween.tween_property(input_help, "position", _input_init_pos, 0.3).from(input_start).set_delay(0.5)
 
 	tween.play()
 
