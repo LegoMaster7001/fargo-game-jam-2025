@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://brbwasvokje4v"]
+[gd_scene load_steps=6 format=3 uid="uid://dx8brxwbk0nyx"]
 
 [ext_resource type="Script" uid="uid://f5pvpf5nsqh4" path="res://Scripts/game_over_screen.gd" id="1_ek8ke"]
 [ext_resource type="Material" uid="uid://djyvahvhc5tkg" path="res://blur_material.tres" id="1_eoghk"]
