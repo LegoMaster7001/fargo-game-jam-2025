@@ -17,21 +17,23 @@ func _ready() -> void:
 
 func _physics_process(delta: float):
 	velocity = dir * speed
+	if Global.player_is_hunter && Global.slow_timer.time_left > 0:
+		velocity *= 0.5
 	checkDashing()
 	
 	move_and_slide()
 
 func _unhandled_input(event: InputEvent):
-	dir.x = Input.get_axis("ui_left", "ui_right")
-	dir.y = Input.get_axis("ui_up", "ui_down")
+	dir.x = Input.get_axis("move_left", "move_right")
+	dir.y = Input.get_axis("move_up", "move_down")
 	dir = dir.normalized()
 
 	if event.is_action_pressed("call_groundies"):
 		groundies_area.try_call_groundies()
 
-	if event.is_action_pressed("debug_flip_role"):
-		Global.addTime(false)
-		Global.flip_role(true)
+	#if event.is_action_pressed("debug_flip_role"):
+		#Global.addTime(false)
+		#Global.flip_role(true)
 
 func checkDashing():
 	if (Input.is_key_pressed(KEY_E) && dashReady && Global.player_is_hunter):
@@ -62,8 +64,6 @@ func _on_role_changed(old_role: Global.role, role: Global.role, timeout: bool) -
 	changeSprites()
 	
 func _get_cooldown_time():
-	if (Global.player_is_hunter):
-		return $DashCooldownTimer.time_left
 	if (Global.player_is_hunted):
 		return 
-	return $DashCooldownTimer.time_left
+	return $DashCooldownTimer

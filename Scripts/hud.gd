@@ -14,6 +14,7 @@ var HUNT_TEXT_TEXTURE = ResourceLoader.load("res://Images/text/hunt_text_outline
 @export var cooldown_timer_label : Label
 @export var cooldown_label : Label
 @export var scoreLabel: Label
+@export var tag_cooldown_label : Label
 @export var compass: Compass
 @export var pause_menu: PauseMenu
 @export var game_over_screen: GameOverScreen
@@ -29,10 +30,11 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	time_label.text = TIME_FORMAT % [Global.chase_timer.time_left]
-	cooldown_timer_label.text = TIME_FORMAT % [currentCooldownTimer()]
-	cooldown_label.text = currentCooldownName()
 	var player_to_enemy := player.position.direction_to(enemy.position)
 	compass.update_needle(player_to_enemy, delta)
+	
+	AbilityCooldownVisibility()
+	tagCooldownTimerVisibility()
 
 func _on_groundies_called(isInAreaWhenGroundies):
 	isInArea = isInAreaWhenGroundies
@@ -40,8 +42,8 @@ func _on_groundies_called(isInAreaWhenGroundies):
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		pause_game()
-	if event.is_action_pressed("debug_end_game"):
-		end_game()
+	#if event.is_action_pressed("debug_end_game"):
+	#	end_game()
 
 func pause_game():
 	get_tree().paused = true
@@ -53,7 +55,7 @@ func end_game():
 	get_tree().paused = true
 	hide()
 	game_over_screen.show()
-	game_over_screen.animate()
+	game_over_screen.do_game_over_stuff()
 
 func _on_role_changed(old: Global.role, current: Global.role, timeout: bool) -> void:
 	if (Global.role.hunted == old && timeout):
@@ -90,3 +92,23 @@ func currentCooldownName():
 	if Global.player_is_hunted:
 		return "Groundies Cooldown"
 	return "Dash Cooldown"
+
+func currentTagCooldownTimer():
+	return enemy.getTagCooldownTimer()
+	
+func tagCooldownTimerVisibility():
+	if enemy.tag_checker.debounce_timer.is_stopped():
+		tag_cooldown_label.visible = false
+	else:
+		tag_cooldown_label.visible = true
+	tag_cooldown_label.text = "tag cooldown : "+ TIME_FORMAT % [currentTagCooldownTimer()]
+	
+func AbilityCooldownVisibility():
+	if currentCooldownTimer().is_stopped():
+		cooldown_timer_label.visible = false
+		cooldown_label.visible = false
+	else:
+		cooldown_timer_label.visible = true
+		cooldown_label.visible = true
+	cooldown_timer_label.text = TIME_FORMAT % [currentCooldownTimer().time_left]
+	cooldown_label.text = currentCooldownName()

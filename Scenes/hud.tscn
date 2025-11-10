@@ -15,7 +15,7 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("role_texture", "time_label", "cooldown_timer_label", "cooldown_label", "scoreLabel", "compass")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("role_texture", "time_label", "cooldown_timer_label", "cooldown_label", "tag_cooldown_label", "scoreLabel", "compass")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -28,6 +28,7 @@ time_label = NodePath("TimeLabel")
 cooldown_timer_label = NodePath("CooldownTimer")
 cooldown_label = NodePath("CooldownName")
 scoreLabel = NodePath("ScoreLabel")
+tag_cooldown_label = NodePath("TagCooldownTimer")
 compass = NodePath("Compass")
 
 [node name="Compass" type="Control" parent="."]
@@ -115,3 +116,17 @@ offset_top = 17.0
 offset_right = 101.04348
 offset_bottom = 59.0
 label_settings = SubResource("LabelSettings_6fbih")
+
+[node name="TagCooldownTimer" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -575.0
+offset_top = 601.0
+offset_right = 575.0
+offset_bottom = 646.0
+grow_horizontal = 2
+text = "0.0"
+label_settings = SubResource("LabelSettings_e0onf")
+horizontal_alignment = 1
