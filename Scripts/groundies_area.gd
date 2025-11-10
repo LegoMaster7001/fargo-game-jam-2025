@@ -23,6 +23,7 @@ func try_call_groundies() -> bool:
 			groundiesCalled.emit(false)
 			return false
 		grounded_audio.play()
+		Global.addTime(false)
 		Global.flip_role(true)
 		groundiesCalled.emit(true)
 		
@@ -39,4 +40,4 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, 
 		ShapeToAdd = meshes[local_shape_index]
 
 func _get_cooldown_timer():
-	return $groundiesCooldownTimer.time_left
+	return $groundiesCooldownTimer

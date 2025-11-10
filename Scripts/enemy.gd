@@ -26,6 +26,7 @@ func _physics_process(delta: float) -> void:
 	velocity = dir * speed
 	move_and_slide()
 	if tag_checker.try_tag():
+		Global.addTime(false)
 		Global.flip_role(false)
 	
 	changeSprites()
@@ -48,6 +49,7 @@ func _on_hunt_area_body_exited(body: Node2D) -> void:
 		return
 	# the player has escaped, so now we become hunted
 	print("{0} escaped".format([body.name]))
+	Global.addTime(false)
 	Global.flip_role(true)
 	
 func changeSprites():

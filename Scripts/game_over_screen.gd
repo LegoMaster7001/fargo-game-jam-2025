@@ -3,14 +3,18 @@ extends Control
 
 const WIN_TEXT := "(you [color=green]WON![/color])"
 const LOSE_TEXT := "(you [color=red]LOST...[/color])"
+var game_time = " seconds"
 
 @export var overlay: ColorRect
 @export var title: Control
 @export var victory_label: RichTextLabel
+@export var gametimelabel: Label
 
 @onready var _title_initial_pos := title.position
 
 func do_game_over_stuff():
+	var formatted_time = "%.3f" % Global.total_time
+	gametimelabel.text = str(formatted_time) + " seconds"
 	var won = Global.score > 0
 	MusicPlayer.stream = MusicPlayer.WIN_MUSIC if won else MusicPlayer.LOSS_MUSIC
 	MusicPlayer.play()

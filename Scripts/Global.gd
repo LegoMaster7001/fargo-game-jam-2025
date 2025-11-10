@@ -27,10 +27,18 @@ var player_is_hunter: bool :
 var chase_timer := Timer.new()
 var slow_timer := Timer.new()
 
+var total_time: float = 0
+
 func _ready() -> void:
 	chase_timer.wait_time = CHASE_DURATION
 	chase_timer.timeout.connect(_on_timeout)
 	add_child(chase_timer)
+	
+func addTime(timeout: bool):
+	if (timeout):
+		total_time += 10
+	elif (!timeout):
+		total_time += 10 - chase_timer.time_left
 
 	slow_timer.wait_time = SLOW_DURATION
 	slow_timer.one_shot = true
@@ -51,6 +59,7 @@ func subtractScore():
 	score -= 1
 
 func _on_timeout() -> void:
+	Global.addTime(true)
 	Global.flip_role(true)
 
 func restart():
