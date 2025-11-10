@@ -15,7 +15,7 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("role_texture", "time_label", "cooldown_timer_label", "cooldown_label", "tag_cooldown_label", "scoreLabel", "compass")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("role_texture", "time_label", "cooldown_timer_label", "cooldown_label", "scoreLabel", "tag_cooldown_label", "compass")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

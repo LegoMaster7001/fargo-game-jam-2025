@@ -13,7 +13,7 @@ var game_time = " seconds"
 @onready var _title_initial_pos := title.position
 
 func do_game_over_stuff():
-  var formatted_time = "%.3f" % Global.total_time
+	var formatted_time = "%.3f" % Global.total_time
 	gametimelabel.text = str(formatted_time) + " seconds"
 	var won = Global.score > 0
 	MusicPlayer.stream = MusicPlayer.WIN_MUSIC if won else MusicPlayer.LOSS_MUSIC
