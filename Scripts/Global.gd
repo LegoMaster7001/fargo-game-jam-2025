@@ -66,5 +66,5 @@ func restart():
 	MusicPlayer.stream = MusicPlayer.DEFAULT_MUSIC
 	MusicPlayer.play()
 	current_role = role.hunted
-	score = 0
+	score = -1
 	game_over = false
