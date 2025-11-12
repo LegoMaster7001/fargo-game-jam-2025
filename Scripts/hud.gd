@@ -18,6 +18,7 @@ var HUNT_TEXT_TEXTURE = ResourceLoader.load("res://Images/text/hunt_text_outline
 @export var compass: Compass
 @export var pause_menu: PauseMenu
 @export var game_over_screen: GameOverScreen
+@export var elapsed_time_label: Label
 var isInArea = false
 var hasEscaped = false
 
@@ -37,14 +38,17 @@ func _physics_process(delta: float) -> void:
 	AbilityCooldownVisibility()
 	tagCooldownTimerVisibility()
 
+func _process(delta: float) -> void:
+	elapsed_time_label.text = "IGT: %.3f" % Global.total_time
+
 func _on_groundies_called(isInAreaWhenGroundies):
 	isInArea = isInAreaWhenGroundies
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause"):
 		pause_game()
-	#if event.is_action_pressed("debug_end_game"):
-	#	end_game()
+	# if event.is_action_pressed("debug_end_game"):
+	# 	end_game()
 
 func pause_game():
 	get_tree().paused = true

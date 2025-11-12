@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cjml38bf5i315" path="res://Scripts/hud.gd" id="1_e0onf"]
 [ext_resource type="Texture2D" uid="uid://bh63y3lp31w4j" path="res://Images/compass_arrow.png" id="3_6fbih"]
-[ext_resource type="Script" path="res://Scripts/compass.gd" id="3_bjfho"]
+[ext_resource type="Script" uid="uid://doft2q4alty4t" path="res://Scripts/compass.gd" id="3_bjfho"]
 [ext_resource type="Texture2D" uid="uid://b638owqswovbq" path="res://Images/text/Hide_text_outlined.png" id="4_6fbih"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_e0onf"]
@@ -15,7 +15,7 @@ font_size = 32
 outline_size = 16
 outline_color = Color(0, 0, 0, 1)
 
-[node name="HUD" type="Control" node_paths=PackedStringArray("role_texture", "time_label", "cooldown_timer_label", "cooldown_label", "scoreLabel", "tag_cooldown_label", "compass")]
+[node name="HUD" type="Control" node_paths=PackedStringArray("role_texture", "time_label", "cooldown_timer_label", "cooldown_label", "scoreLabel", "tag_cooldown_label", "compass", "elapsed_time_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +30,7 @@ cooldown_label = NodePath("CooldownName")
 scoreLabel = NodePath("ScoreLabel")
 tag_cooldown_label = NodePath("TagCooldownTimer")
 compass = NodePath("Compass")
+elapsed_time_label = NodePath("TimeLabel2")
 
 [node name="Compass" type="Control" parent="."]
 layout_mode = 1
@@ -115,6 +116,15 @@ offset_left = 28.0
 offset_top = 17.0
 offset_right = 101.04348
 offset_bottom = 59.0
+label_settings = SubResource("LabelSettings_6fbih")
+
+[node name="TimeLabel2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 90.0
+offset_right = 101.04348
+offset_bottom = 135.0
+text = "IGT: 0.000"
 label_settings = SubResource("LabelSettings_6fbih")
 
 [node name="TagCooldownTimer" type="Label" parent="."]

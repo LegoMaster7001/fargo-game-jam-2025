@@ -5,3 +5,6 @@ func _ready() -> void:
 	Global.current_role = Global.role.hunted
 	Global.chase_timer.start()
 	get_tree().paused = false
+
+func _process(delta: float) -> void:
+	Global.total_time += delta

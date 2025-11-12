@@ -33,16 +33,17 @@ func _ready() -> void:
 	chase_timer.wait_time = CHASE_DURATION
 	chase_timer.timeout.connect(_on_timeout)
 	add_child(chase_timer)
-	
-func addTime(timeout: bool):
-	if (timeout):
-		total_time += 10
-	elif (!timeout):
-		total_time += 10 - chase_timer.time_left
 
 	slow_timer.wait_time = SLOW_DURATION
 	slow_timer.one_shot = true
 	add_child(slow_timer)
+	
+func addTime(timeout: bool):
+	# if (timeout):
+	# 	total_time += 10
+	# elif (!timeout):
+	# 	total_time += 10 - chase_timer.time_left
+	pass
 
 func flip_role(timeout: bool):
 	if not timeout:
@@ -59,7 +60,6 @@ func subtractScore():
 	score -= 1
 
 func _on_timeout() -> void:
-	Global.addTime(true)
 	Global.flip_role(true)
 
 func restart():
@@ -68,3 +68,4 @@ func restart():
 	current_role = role.hunted
 	score = -1
 	game_over = false
+	total_time = 0

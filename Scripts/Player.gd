@@ -30,9 +30,8 @@ func _unhandled_input(event: InputEvent):
 	if event.is_action_pressed("call_groundies"):
 		groundies_area.try_call_groundies()
 
-	#if event.is_action_pressed("debug_flip_role"):
-		#Global.addTime(false)
-		#Global.flip_role(true)
+	# if event.is_action_pressed("debug_flip_role"):
+	# 	Global.flip_role(true)
 
 func checkDashing():
 	if (Input.is_key_pressed(KEY_E) && dashReady && Global.player_is_hunter):
