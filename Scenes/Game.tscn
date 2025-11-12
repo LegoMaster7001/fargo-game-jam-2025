@@ -250,11 +250,9 @@ visible = false
 [node name="GameOver" parent="CanvasLayer" instance=ExtResource("15_acvyw")]
 visible = false
 
-[node name="Restarter" type="Node" parent="." node_paths=PackedStringArray("player", "enemy")]
+[node name="Restarter" type="Node" parent="."]
 process_mode = 3
 script = ExtResource("16_alh3a")
-player = NodePath("../Player")
-enemy = NodePath("../Enemy")
 
 [connection signal="area_entered" from="GroundiesArea" to="GroundiesArea" method="_on_area_entered"]
 [connection signal="body_shape_entered" from="GroundiesArea" to="GroundiesArea" method="_on_body_shape_entered"]

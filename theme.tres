@@ -1,0 +1,32 @@
+[gd_resource type="Theme" format=3 uid="uid://caihkcnsoajci"]
+
+[resource]
+Button/constants/outline_size = 0
+CheckBox/constants/outline_size = 0
+CheckButton/constants/outline_size = 0
+CodeEdit/constants/outline_size = 0
+ColorPickerButton/constants/outline_size = 0
+FoldableContainer/constants/outline_size = 0
+GraphFrameTitleLabel/constants/outline_size = 0
+GraphFrameTitleLabel/constants/shadow_outline_size = 0
+GraphNodeTitleLabel/constants/outline_size = 0
+GraphNodeTitleLabel/constants/shadow_outline_size = 0
+ItemList/constants/outline_size = 0
+Label/constants/outline_size = 16
+Label/constants/shadow_outline_size = 0
+LineEdit/constants/outline_size = 0
+LinkButton/constants/outline_size = 0
+MenuBar/constants/outline_size = 0
+MenuButton/constants/outline_size = 0
+OptionButton/constants/outline_size = 0
+PopupMenu/constants/outline_size = 0
+PopupMenu/constants/separator_outline_size = 0
+ProgressBar/constants/outline_size = 0
+RichTextLabel/constants/outline_size = 0
+RichTextLabel/constants/shadow_outline_size = 0
+TabBar/constants/outline_size = 0
+TabContainer/constants/outline_size = 0
+TextEdit/constants/outline_size = 0
+TooltipLabel/constants/outline_size = 0
+Tree/constants/outline_size = 0
+Window/constants/title_outline_size = 0

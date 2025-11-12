@@ -11,9 +11,11 @@ grounded_fail_audio = NodePath("GroundedFailAudio")
 
 [node name="GroundedAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_6pxps")
+bus = &"Sound Effects"
 
 [node name="GroundedFailAudio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_nhsnj")
+bus = &"Sound Effects"
 
 [node name="groundiesCooldownTimer" type="Timer" parent="."]
 wait_time = 2.0
